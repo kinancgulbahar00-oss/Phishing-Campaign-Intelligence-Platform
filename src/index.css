@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --grid-line: rgba(255, 255, 255, 0.022);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: 'cv05' 1, 'ss01' 1;
+    background-image:
+      radial-gradient(1100px 520px at 50% -8%, rgba(201, 162, 39, 0.07), transparent 62%),
+      radial-gradient(900px 480px at 88% 4%, rgba(91, 141, 239, 0.06), transparent 60%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-sans text-ink;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  /* Klavye kullanicilari icin gorunur odak halkasi */
+  :focus-visible {
+    outline: none;
+    @apply ring-2 ring-brand-400/70 ring-offset-2 ring-offset-canvas rounded-[6px];
+  }
+
+  ::selection {
+    background: rgba(201, 162, 39, 0.28);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0A101C;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #253453;
+    border-radius: 999px;
+    border: 2px solid #0A101C;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33456B;
+  }
+}
+
+@layer components {
+  /* Tum kartlarin ortak kabugu: hairline cerceve + ust parlama */
+  .panel {
+    @apply relative rounded-panel border border-line bg-surface bg-panel-sheen shadow-panel;
+  }
+  .panel-title {
+    @apply text-eyebrow font-semibold uppercase text-ink-3;
+  }
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+  .data {
+    @apply font-mono tabular-nums tracking-tight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
