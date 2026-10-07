@@ -8,6 +8,7 @@ from backend.core.domain_intel import lookup_domain_registration, resolve_ip
 from backend.core.reputation import check_ip_reputation, check_url_reputation
 from backend.core.typosquat import find_related_domains
 from backend.models.list_model import ListModel
+from backend.core.list_utils import extract_host, host_matches
 
 def parse_url_components(url: str):
     if not url.startswith(("http://", "https://")):
@@ -29,16 +30,12 @@ def parse_url_components(url: str):
 def check_list_match(db: Session, domain: str, raw_url: str, list_type: str):
     if not db:
         return None
+    host = extract_host(domain) or extract_host(raw_url)
     entries = db.query(ListModel).filter(ListModel.list_type == list_type).all()
-    domain_clean = domain.lower().strip()
-    url_clean = raw_url.lower().strip()
-    
     for entry in entries:
-        p = entry.pattern.lower().strip()
-        if p and (domain_clean == p or domain_clean.endswith("." + p) or p in url_clean):
+        if host_matches(host, extract_host(entry.pattern)):
             return entry
     return None
-
 def analyze_url_pipeline(raw_url: str, db: Session = None) -> dict:
     parsed = parse_url_components(raw_url)
     domain = parsed["domain"]
