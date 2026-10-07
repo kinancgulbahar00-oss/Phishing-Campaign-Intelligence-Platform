@@ -1,0 +1,3885 @@
+{
+ "_readme": "Mihenk marka katalogu. domains: resmi kayitli alan adlari (alt alan adlari otomatik resmi sayilir). aliases: URL'de aranacak ASCII ifadeler. weak_aliases: tek basina belirsiz ifadeler; yalnizca ayni sektorun tuzak kelimesiyle birlikte sayilir. terms: sayfa iceriginde aranacak gorunen adlar. gov: true ise .gov.tr gibi kisitli uzantilar da resmi sayilir.",
+ "restricted_suffixes": [
+  "gov.tr",
+  "edu.tr",
+  "k12.tr",
+  "bel.tr",
+  "pol.tr",
+  "tsk.tr",
+  "mil.tr",
+  "av.tr",
+  "dr.tr",
+  "kep.tr"
+ ],
+ "sectors": {
+  "bank": {
+   "label": "Banka",
+   "lures": [
+    "kredi",
+    "kart",
+    "limit",
+    "aidat",
+    "puan",
+    "musteri",
+    "sube",
+    "internetbankaciligi",
+    "internet-bankaciligi",
+    "mobil",
+    "sifre",
+    "hesap",
+    "onay",
+    "kampanya",
+    "faiz",
+    "borc",
+    "iade",
+    "guvenlik",
+    "dogrulama",
+    "giris",
+    "bonus"
+   ]
+  },
+  "participation": {
+   "label": "Katılım bankası",
+   "lures": [
+    "kredi",
+    "kart",
+    "limit",
+    "musteri",
+    "sube",
+    "internetsubesi",
+    "mobil",
+    "sifre",
+    "hesap",
+    "onay",
+    "kampanya",
+    "finansman",
+    "giris"
+   ]
+  },
+  "payment": {
+   "label": "Ödeme ve e-para",
+   "lures": [
+    "odeme",
+    "bakiye",
+    "cuzdan",
+    "transfer",
+    "para",
+    "iade",
+    "kart",
+    "hesap",
+    "giris",
+    "onay",
+    "dogrula"
+   ]
+  },
+  "crypto": {
+   "label": "Kripto varlık",
+   "lures": [
+    "airdrop",
+    "wallet",
+    "cuzdan",
+    "claim",
+    "bonus",
+    "staking",
+    "odul",
+    "kampanya",
+    "giris",
+    "login",
+    "verify",
+    "dogrula",
+    "cekim",
+    "yatirim"
+   ]
+  },
+  "government": {
+   "label": "Kamu kurumu",
+   "lures": [
+    "ceza",
+    "borc",
+    "vergi",
+    "iade",
+    "tazminat",
+    "destek",
+    "odeme",
+    "yardim",
+    "basvuru",
+    "sorgula",
+    "sorgulama",
+    "tebligat",
+    "icra",
+    "dava",
+    "emekli",
+    "maas",
+    "ikramiye",
+    "kimlik",
+    "randevu",
+    "plaka",
+    "trafik",
+    "harc",
+    "giris",
+    "dogrula",
+    "hibe",
+    "kira"
+   ]
+  },
+  "municipal": {
+   "label": "Belediye ve yerel hizmet",
+   "lures": [
+    "fatura",
+    "borc",
+    "odeme",
+    "su",
+    "dogalgaz",
+    "abonelik",
+    "iade",
+    "kart",
+    "bakiye",
+    "yukle",
+    "ceza",
+    "sorgula"
+   ]
+  },
+  "cargo": {
+   "label": "Kargo ve lojistik",
+   "lures": [
+    "kargo",
+    "gonderi",
+    "teslimat",
+    "takip",
+    "gumruk",
+    "adres",
+    "iade",
+    "paket",
+    "dagitim",
+    "odeme",
+    "ucret",
+    "bekleyen"
+   ]
+  },
+  "ecommerce": {
+   "label": "E-ticaret ve perakende",
+   "lures": [
+    "siparis",
+    "indirim",
+    "kampanya",
+    "hediye",
+    "cekilis",
+    "kupon",
+    "ceki",
+    "odeme",
+    "iade",
+    "firsat",
+    "kazandiniz",
+    "musteri",
+    "giris"
+   ]
+  },
+  "telecom": {
+   "label": "Telekom ve internet",
+   "lures": [
+    "fatura",
+    "hat",
+    "paket",
+    "hediye",
+    "internet",
+    "gb",
+    "odeme",
+    "borc",
+    "iade",
+    "kampanya",
+    "musteri",
+    "giris",
+    "puan"
+   ]
+  },
+  "energy": {
+   "label": "Enerji ve altyapı",
+   "lures": [
+    "fatura",
+    "borc",
+    "odeme",
+    "iade",
+    "abonelik",
+    "sayac",
+    "kesinti",
+    "elektrik",
+    "dogalgaz",
+    "tazminat"
+   ]
+  },
+  "travel": {
+   "label": "Ulaşım ve seyahat",
+   "lures": [
+    "bilet",
+    "rezervasyon",
+    "iade",
+    "mil",
+    "puan",
+    "check-in",
+    "checkin",
+    "kampanya",
+    "ucus",
+    "sefer",
+    "odeme",
+    "indirim"
+   ]
+  },
+  "insurance": {
+   "label": "Sigorta ve emeklilik",
+   "lures": [
+    "police",
+    "hasar",
+    "tazminat",
+    "iade",
+    "odeme",
+    "bes",
+    "emeklilik",
+    "prim",
+    "teklif"
+   ]
+  },
+  "betting": {
+   "label": "Şans oyunları",
+   "lures": [
+    "bonus",
+    "kupon",
+    "ikramiye",
+    "cekilis",
+    "kazandiniz",
+    "bilet",
+    "odeme",
+    "cekim",
+    "giris"
+   ]
+  },
+  "health": {
+   "label": "Sağlık",
+   "lures": [
+    "randevu",
+    "rapor",
+    "tahlil",
+    "sonuc",
+    "recete",
+    "odeme",
+    "giris"
+   ]
+  },
+  "education": {
+   "label": "Eğitim ve sınav",
+   "lures": [
+    "sinav",
+    "sonuc",
+    "burs",
+    "kredi",
+    "basvuru",
+    "ucret",
+    "odeme",
+    "giris",
+    "kayit"
+   ]
+  },
+  "charity": {
+   "label": "Yardım kuruluşu",
+   "lures": [
+    "bagis",
+    "deprem",
+    "yardim",
+    "destek",
+    "iban",
+    "kampanya",
+    "afet"
+   ]
+  },
+  "digital": {
+   "label": "Dijital platform",
+   "lures": [
+    "login",
+    "giris",
+    "verify",
+    "dogrula",
+    "hesap",
+    "account",
+    "sifre",
+    "password",
+    "telif",
+    "copyright",
+    "rozet",
+    "badge",
+    "onay",
+    "abonelik",
+    "odeme",
+    "uyelik"
+   ]
+  },
+  "automotive": {
+   "label": "Otomotiv",
+   "lures": [
+    "siparis",
+    "onsiparis",
+    "rezervasyon",
+    "kapora",
+    "teslimat",
+    "kampanya",
+    "cekilis"
+   ]
+  }
+ },
+ "brands": [
+  {
+   "id": "ziraat",
+   "name": "Ziraat Bankası",
+   "sector": "bank",
+   "domains": [
+    "ziraatbank.com.tr",
+    "ziraat.com.tr",
+    "bankkart.com.tr"
+   ],
+   "aliases": [
+    "ziraatbank",
+    "ziraatbankasi",
+    "bankkart"
+   ],
+   "terms": [
+    "ziraat bankası",
+    "ziraat internet bankacılığı",
+    "bankkart"
+   ],
+   "weak_aliases": [
+    "ziraat"
+   ]
+  },
+  {
+   "id": "halkbank",
+   "name": "Halkbank",
+   "sector": "bank",
+   "domains": [
+    "halkbank.com.tr",
+    "paraf.com.tr"
+   ],
+   "aliases": [
+    "halkbank",
+    "halkbankasi"
+   ],
+   "weak_aliases": [
+    "paraf"
+   ],
+   "terms": [
+    "halkbank",
+    "paraf kart"
+   ]
+  },
+  {
+   "id": "vakifbank",
+   "name": "VakıfBank",
+   "sector": "bank",
+   "domains": [
+    "vakifbank.com.tr"
+   ],
+   "aliases": [
+    "vakifbank",
+    "vakiflarbankasi"
+   ],
+   "terms": [
+    "vakıfbank",
+    "vakifbank"
+   ]
+  },
+  {
+   "id": "isbank",
+   "name": "Türkiye İş Bankası",
+   "sector": "bank",
+   "domains": [
+    "isbank.com.tr",
+    "maximum.com.tr",
+    "isbank.com"
+   ],
+   "aliases": [
+    "isbank",
+    "isbankasi",
+    "iscep"
+   ],
+   "weak_aliases": [
+    "maximum"
+   ],
+   "terms": [
+    "iş bankası",
+    "işcep",
+    "maximum kart"
+   ]
+  },
+  {
+   "id": "garanti",
+   "name": "Garanti BBVA",
+   "sector": "bank",
+   "domains": [
+    "garantibbva.com.tr",
+    "garanti.com.tr",
+    "bonus.com.tr",
+    "garantibbvaemeklilik.com.tr",
+    "garantibbvayatirim.com.tr",
+    "garantibbvafiloleasing.com.tr"
+   ],
+   "aliases": [
+    "garantibbva",
+    "garantibankasi",
+    "bonuskart",
+    "bonuscard",
+    "garantipay"
+   ],
+   "weak_aliases": [
+    "bonus",
+    "garanti"
+   ],
+   "terms": [
+    "garanti bbva",
+    "bonus card",
+    "garanti bankası"
+   ]
+  },
+  {
+   "id": "yapikredi",
+   "name": "Yapı Kredi",
+   "sector": "bank",
+   "domains": [
+    "yapikredi.com.tr",
+    "worldcard.com.tr",
+    "yapikredi.com"
+   ],
+   "aliases": [
+    "yapikredi",
+    "yapikredibankasi",
+    "worldcard",
+    "worldpuan"
+   ],
+   "terms": [
+    "yapı kredi",
+    "worldcard",
+    "world kart"
+   ]
+  },
+  {
+   "id": "akbank",
+   "name": "Akbank",
+   "sector": "bank",
+   "domains": [
+    "akbank.com",
+    "akbank.com.tr",
+    "axess.com.tr",
+    "juzdan.com"
+   ],
+   "aliases": [
+    "akbank",
+    "axess",
+    "juzdan",
+    "akbankdirekt"
+   ],
+   "terms": [
+    "akbank",
+    "axess",
+    "akbank direkt"
+   ]
+  },
+  {
+   "id": "qnb",
+   "name": "QNB",
+   "sector": "bank",
+   "domains": [
+    "qnb.com.tr",
+    "qnbfinansbank.com",
+    "cardfinans.com.tr",
+    "enpara.com"
+   ],
+   "aliases": [
+    "qnbfinans",
+    "qnbfinansbank",
+    "finansbank",
+    "cardfinans"
+   ],
+   "weak_aliases": [
+    "qnb"
+   ],
+   "terms": [
+    "qnb finansbank",
+    "qnb",
+    "cardfinans"
+   ]
+  },
+  {
+   "id": "enpara",
+   "name": "Enpara.com",
+   "sector": "bank",
+   "domains": [
+    "enpara.com"
+   ],
+   "aliases": [
+    "enpara"
+   ],
+   "terms": [
+    "enpara"
+   ]
+  },
+  {
+   "id": "denizbank",
+   "name": "DenizBank",
+   "sector": "bank",
+   "domains": [
+    "denizbank.com",
+    "denizbank.com.tr",
+    "fastpay.com.tr"
+   ],
+   "aliases": [
+    "denizbank",
+    "denizbankasi",
+    "mobildeniz"
+   ],
+   "terms": [
+    "denizbank",
+    "mobildeniz"
+   ]
+  },
+  {
+   "id": "teb",
+   "name": "TEB",
+   "sector": "bank",
+   "domains": [
+    "teb.com.tr",
+    "cepteteb.com.tr"
+   ],
+   "aliases": [
+    "cepteteb",
+    "tebbankasi",
+    "turkekonomibankasi"
+   ],
+   "weak_aliases": [
+    "teb"
+   ],
+   "terms": [
+    "türk ekonomi bankası",
+    "cepteteb"
+   ]
+  },
+  {
+   "id": "ing",
+   "name": "ING Türkiye",
+   "sector": "bank",
+   "domains": [
+    "ing.com.tr",
+    "ing.com"
+   ],
+   "aliases": [
+    "ingbank",
+    "ingturkiye"
+   ],
+   "weak_aliases": [
+    "ing"
+   ],
+   "terms": [
+    "ing bank",
+    "ing türkiye"
+   ]
+  },
+  {
+   "id": "hsbc",
+   "name": "HSBC Türkiye",
+   "sector": "bank",
+   "domains": [
+    "hsbc.com.tr",
+    "hsbc.com"
+   ],
+   "aliases": [
+    "hsbc"
+   ],
+   "terms": [
+    "hsbc"
+   ]
+  },
+  {
+   "id": "sekerbank",
+   "name": "Şekerbank",
+   "sector": "bank",
+   "domains": [
+    "sekerbank.com.tr"
+   ],
+   "aliases": [
+    "sekerbank"
+   ],
+   "terms": [
+    "şekerbank"
+   ]
+  },
+  {
+   "id": "fibabanka",
+   "name": "Fibabanka",
+   "sector": "bank",
+   "domains": [
+    "fibabanka.com.tr"
+   ],
+   "aliases": [
+    "fibabanka"
+   ],
+   "terms": [
+    "fibabanka"
+   ]
+  },
+  {
+   "id": "odeabank",
+   "name": "Odeabank",
+   "sector": "bank",
+   "domains": [
+    "odeabank.com.tr"
+   ],
+   "aliases": [
+    "odeabank"
+   ],
+   "terms": [
+    "odeabank"
+   ]
+  },
+  {
+   "id": "alternatifbank",
+   "name": "Alternatif Bank",
+   "sector": "bank",
+   "domains": [
+    "alternatifbank.com.tr"
+   ],
+   "aliases": [
+    "alternatifbank"
+   ],
+   "terms": [
+    "alternatif bank"
+   ]
+  },
+  {
+   "id": "anadolubank",
+   "name": "Anadolubank",
+   "sector": "bank",
+   "domains": [
+    "anadolubank.com.tr"
+   ],
+   "aliases": [
+    "anadolubank"
+   ],
+   "terms": [
+    "anadolubank"
+   ]
+  },
+  {
+   "id": "burgan",
+   "name": "Burgan Bank",
+   "sector": "bank",
+   "domains": [
+    "burgan.com.tr",
+    "on.com.tr"
+   ],
+   "aliases": [
+    "burganbank"
+   ],
+   "terms": [
+    "burgan bank"
+   ]
+  },
+  {
+   "id": "icbc",
+   "name": "ICBC Turkey",
+   "sector": "bank",
+   "domains": [
+    "icbc.com.tr"
+   ],
+   "aliases": [
+    "icbcturkey"
+   ],
+   "terms": [
+    "icbc turkey"
+   ]
+  },
+  {
+   "id": "citibank",
+   "name": "Citibank Türkiye",
+   "sector": "bank",
+   "domains": [
+    "citibank.com.tr",
+    "citi.com"
+   ],
+   "aliases": [
+    "citibank"
+   ],
+   "terms": [
+    "citibank"
+   ]
+  },
+  {
+   "id": "kuveytturk",
+   "name": "Kuveyt Türk",
+   "sector": "participation",
+   "domains": [
+    "kuveytturk.com.tr"
+   ],
+   "aliases": [
+    "kuveytturk"
+   ],
+   "terms": [
+    "kuveyt türk"
+   ]
+  },
+  {
+   "id": "turkiyefinans",
+   "name": "Türkiye Finans",
+   "sector": "participation",
+   "domains": [
+    "turkiyefinans.com.tr",
+    "happycard.com.tr"
+   ],
+   "aliases": [
+    "turkiyefinans"
+   ],
+   "terms": [
+    "türkiye finans"
+   ]
+  },
+  {
+   "id": "albaraka",
+   "name": "Albaraka Türk",
+   "sector": "participation",
+   "domains": [
+    "albaraka.com.tr"
+   ],
+   "aliases": [
+    "albaraka"
+   ],
+   "terms": [
+    "albaraka"
+   ]
+  },
+  {
+   "id": "vakifkatilim",
+   "name": "Vakıf Katılım",
+   "sector": "participation",
+   "domains": [
+    "vakifkatilim.com.tr"
+   ],
+   "aliases": [
+    "vakifkatilim"
+   ],
+   "terms": [
+    "vakıf katılım"
+   ]
+  },
+  {
+   "id": "ziraatkatilim",
+   "name": "Ziraat Katılım",
+   "sector": "participation",
+   "domains": [
+    "ziraatkatilim.com.tr"
+   ],
+   "aliases": [
+    "ziraatkatilim"
+   ],
+   "terms": [
+    "ziraat katılım"
+   ]
+  },
+  {
+   "id": "emlakkatilim",
+   "name": "Emlak Katılım",
+   "sector": "participation",
+   "domains": [
+    "emlakkatilim.com.tr"
+   ],
+   "aliases": [
+    "emlakkatilim"
+   ],
+   "terms": [
+    "emlak katılım"
+   ]
+  },
+  {
+   "id": "papara",
+   "name": "Papara",
+   "sector": "payment",
+   "domains": [
+    "papara.com"
+   ],
+   "aliases": [
+    "papara"
+   ],
+   "terms": [
+    "papara"
+   ]
+  },
+  {
+   "id": "ininal",
+   "name": "ininal",
+   "sector": "payment",
+   "domains": [
+    "ininal.com"
+   ],
+   "aliases": [
+    "ininal"
+   ],
+   "terms": [
+    "ininal"
+   ]
+  },
+  {
+   "id": "param",
+   "name": "Param",
+   "sector": "payment",
+   "domains": [
+    "param.com.tr"
+   ],
+   "aliases": [
+    "paramkart"
+   ],
+   "weak_aliases": [
+    "param"
+   ],
+   "terms": [
+    "param kart"
+   ]
+  },
+  {
+   "id": "tosla",
+   "name": "Tosla",
+   "sector": "payment",
+   "domains": [
+    "tosla.com"
+   ],
+   "aliases": [
+    "tosla"
+   ],
+   "terms": [
+    "tosla"
+   ]
+  },
+  {
+   "id": "paycell",
+   "name": "Paycell",
+   "sector": "payment",
+   "domains": [
+    "paycell.com.tr"
+   ],
+   "aliases": [
+    "paycell"
+   ],
+   "terms": [
+    "paycell"
+   ]
+  },
+  {
+   "id": "iyzico",
+   "name": "iyzico",
+   "sector": "payment",
+   "domains": [
+    "iyzico.com",
+    "iyzi.co"
+   ],
+   "aliases": [
+    "iyzico"
+   ],
+   "terms": [
+    "iyzico"
+   ]
+  },
+  {
+   "id": "paytr",
+   "name": "PayTR",
+   "sector": "payment",
+   "domains": [
+    "paytr.com"
+   ],
+   "aliases": [
+    "paytr"
+   ],
+   "terms": [
+    "paytr"
+   ]
+  },
+  {
+   "id": "hepsipay",
+   "name": "Hepsipay",
+   "sector": "payment",
+   "domains": [
+    "hepsipay.com"
+   ],
+   "aliases": [
+    "hepsipay"
+   ],
+   "terms": [
+    "hepsipay"
+   ]
+  },
+  {
+   "id": "bkmexpress",
+   "name": "BKM Express",
+   "sector": "payment",
+   "domains": [
+    "bkmexpress.com.tr",
+    "bkm.com.tr"
+   ],
+   "aliases": [
+    "bkmexpress"
+   ],
+   "terms": [
+    "bkm express"
+   ]
+  },
+  {
+   "id": "troy",
+   "name": "TROY",
+   "sector": "payment",
+   "domains": [
+    "troyodeme.com"
+   ],
+   "aliases": [
+    "troyodeme",
+    "troykart"
+   ],
+   "terms": [
+    "troy kart"
+   ]
+  },
+  {
+   "id": "colendi",
+   "name": "Colendi",
+   "sector": "payment",
+   "domains": [
+    "colendi.com"
+   ],
+   "aliases": [
+    "colendi"
+   ],
+   "terms": [
+    "colendi"
+   ]
+  },
+  {
+   "id": "paypal",
+   "name": "PayPal",
+   "sector": "payment",
+   "domains": [
+    "paypal.com",
+    "paypal.me"
+   ],
+   "aliases": [
+    "paypal"
+   ],
+   "terms": [
+    "paypal"
+   ]
+  },
+  {
+   "id": "wise",
+   "name": "Wise",
+   "sector": "payment",
+   "domains": [
+    "wise.com",
+    "transferwise.com"
+   ],
+   "aliases": [
+    "transferwise"
+   ],
+   "terms": [
+    "transferwise"
+   ]
+  },
+  {
+   "id": "westernunion",
+   "name": "Western Union",
+   "sector": "payment",
+   "domains": [
+    "westernunion.com"
+   ],
+   "aliases": [
+    "westernunion"
+   ],
+   "terms": [
+    "western union"
+   ]
+  },
+  {
+   "id": "revolut",
+   "name": "Revolut",
+   "sector": "payment",
+   "domains": [
+    "revolut.com"
+   ],
+   "aliases": [
+    "revolut"
+   ],
+   "terms": [
+    "revolut"
+   ]
+  },
+  {
+   "id": "visa",
+   "name": "Visa",
+   "sector": "payment",
+   "domains": [
+    "visa.com",
+    "visa.com.tr"
+   ],
+   "aliases": [
+    "visacard"
+   ],
+   "terms": []
+  },
+  {
+   "id": "mastercard",
+   "name": "Mastercard",
+   "sector": "payment",
+   "domains": [
+    "mastercard.com",
+    "mastercard.com.tr"
+   ],
+   "aliases": [
+    "mastercard"
+   ],
+   "terms": []
+  },
+  {
+   "id": "btcturk",
+   "name": "BtcTurk",
+   "sector": "crypto",
+   "domains": [
+    "btcturk.com"
+   ],
+   "aliases": [
+    "btcturk"
+   ],
+   "terms": [
+    "btcturk"
+   ]
+  },
+  {
+   "id": "paribu",
+   "name": "Paribu",
+   "sector": "crypto",
+   "domains": [
+    "paribu.com"
+   ],
+   "aliases": [
+    "paribu"
+   ],
+   "terms": [
+    "paribu"
+   ]
+  },
+  {
+   "id": "binance",
+   "name": "Binance",
+   "sector": "crypto",
+   "domains": [
+    "binance.com",
+    "binance.tr",
+    "binance.me"
+   ],
+   "aliases": [
+    "binance"
+   ],
+   "terms": [
+    "binance"
+   ]
+  },
+  {
+   "id": "bitexen",
+   "name": "Bitexen",
+   "sector": "crypto",
+   "domains": [
+    "bitexen.com"
+   ],
+   "aliases": [
+    "bitexen"
+   ],
+   "terms": [
+    "bitexen"
+   ]
+  },
+  {
+   "id": "okx",
+   "name": "OKX",
+   "sector": "crypto",
+   "domains": [
+    "okx.com"
+   ],
+   "aliases": [
+    "okxtr"
+   ],
+   "weak_aliases": [
+    "okx"
+   ],
+   "terms": [
+    "okx tr"
+   ]
+  },
+  {
+   "id": "icrypex",
+   "name": "Icrypex",
+   "sector": "crypto",
+   "domains": [
+    "icrypex.com"
+   ],
+   "aliases": [
+    "icrypex"
+   ],
+   "terms": [
+    "icrypex"
+   ]
+  },
+  {
+   "id": "bitlo",
+   "name": "Bitlo",
+   "sector": "crypto",
+   "domains": [
+    "bitlo.com"
+   ],
+   "aliases": [
+    "bitlo"
+   ],
+   "terms": [
+    "bitlo"
+   ]
+  },
+  {
+   "id": "kucoin",
+   "name": "KuCoin",
+   "sector": "crypto",
+   "domains": [
+    "kucoin.com"
+   ],
+   "aliases": [
+    "kucoin"
+   ],
+   "terms": [
+    "kucoin"
+   ]
+  },
+  {
+   "id": "coinbase",
+   "name": "Coinbase",
+   "sector": "crypto",
+   "domains": [
+    "coinbase.com"
+   ],
+   "aliases": [
+    "coinbase"
+   ],
+   "terms": [
+    "coinbase"
+   ]
+  },
+  {
+   "id": "bybit",
+   "name": "Bybit",
+   "sector": "crypto",
+   "domains": [
+    "bybit.com"
+   ],
+   "aliases": [
+    "bybit"
+   ],
+   "terms": [
+    "bybit"
+   ]
+  },
+  {
+   "id": "bitget",
+   "name": "Bitget",
+   "sector": "crypto",
+   "domains": [
+    "bitget.com"
+   ],
+   "aliases": [
+    "bitget"
+   ],
+   "terms": [
+    "bitget"
+   ]
+  },
+  {
+   "id": "metamask",
+   "name": "MetaMask",
+   "sector": "crypto",
+   "domains": [
+    "metamask.io"
+   ],
+   "aliases": [
+    "metamask"
+   ],
+   "terms": [
+    "metamask"
+   ]
+  },
+  {
+   "id": "trustwallet",
+   "name": "Trust Wallet",
+   "sector": "crypto",
+   "domains": [
+    "trustwallet.com"
+   ],
+   "aliases": [
+    "trustwallet"
+   ],
+   "terms": [
+    "trust wallet"
+   ]
+  },
+  {
+   "id": "ledger",
+   "name": "Ledger",
+   "sector": "crypto",
+   "domains": [
+    "ledger.com"
+   ],
+   "aliases": [
+    "ledgerlive"
+   ],
+   "terms": [
+    "ledger live"
+   ]
+  },
+  {
+   "id": "edevlet",
+   "name": "e-Devlet Kapısı",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "turkiye.gov.tr"
+   ],
+   "aliases": [
+    "edevlet",
+    "e-devlet",
+    "turkiyegov",
+    "turkiye-gov",
+    "edevletkapisi"
+   ],
+   "terms": [
+    "e-devlet kapısı",
+    "e-devlet",
+    "türkiye.gov.tr"
+   ]
+  },
+  {
+   "id": "gib",
+   "name": "Gelir İdaresi Başkanlığı",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "gib.gov.tr"
+   ],
+   "aliases": [
+    "gelirdaresi",
+    "gelir-idaresi",
+    "gelirdaresibaskanligi",
+    "hazirbeyan",
+    "interaktifvergi",
+    "ivdgib",
+    "vergiiade",
+    "vergi-iade",
+    "vergiborcu"
+   ],
+   "weak_aliases": [
+    "gib",
+    "ivd"
+   ],
+   "terms": [
+    "gelir idaresi başkanlığı",
+    "interaktif vergi dairesi",
+    "hazır beyan"
+   ]
+  },
+  {
+   "id": "sgk",
+   "name": "Sosyal Güvenlik Kurumu",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "sgk.gov.tr"
+   ],
+   "aliases": [
+    "sgk",
+    "sosyalguvenlik",
+    "emekliikramiye",
+    "emeklimaas",
+    "emeklimaasi"
+   ],
+   "terms": [
+    "sosyal güvenlik kurumu",
+    "sgk"
+   ]
+  },
+  {
+   "id": "egm",
+   "name": "Emniyet Genel Müdürlüğü",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "egm.gov.tr"
+   ],
+   "aliases": [
+    "egm",
+    "trafikceza",
+    "trafikcezasi",
+    "trafik-cezasi",
+    "cezasorgula"
+   ],
+   "terms": [
+    "emniyet genel müdürlüğü",
+    "trafik cezası sorgulama"
+   ],
+   "weak_aliases": [
+    "emniyet"
+   ]
+  },
+  {
+   "id": "jandarma",
+   "name": "Jandarma Genel Komutanlığı",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "jandarma.gov.tr"
+   ],
+   "aliases": [
+    "jandarma"
+   ],
+   "terms": [
+    "jandarma genel komutanlığı"
+   ]
+  },
+  {
+   "id": "kgm",
+   "name": "Karayolları / HGS",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "kgm.gov.tr",
+    "hgs.com.tr"
+   ],
+   "aliases": [
+    "hgs",
+    "ogs",
+    "kgm",
+    "karayollari",
+    "hgsceza",
+    "hgsborc",
+    "hgsodeme",
+    "otoyolceza",
+    "kopruceza",
+    "gecisihlal",
+    "gecis-ihlal"
+   ],
+   "terms": [
+    "hgs",
+    "karayolları genel müdürlüğü",
+    "geçiş ihlali"
+   ]
+  },
+  {
+   "id": "nvi",
+   "name": "Nüfus ve Vatandaşlık İşleri",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "nvi.gov.tr"
+   ],
+   "aliases": [
+    "nvi",
+    "nufusmudurlugu",
+    "kimlikkarti",
+    "ehliyetbasvuru",
+    "pasaportbasvuru"
+   ],
+   "terms": [
+    "nüfus ve vatandaşlık işleri"
+   ],
+   "weak_aliases": [
+    "nufus"
+   ]
+  },
+  {
+   "id": "adalet",
+   "name": "Adalet Bakanlığı / UYAP",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "adalet.gov.tr",
+    "uyap.gov.tr"
+   ],
+   "aliases": [
+    "uyap",
+    "icradosyasi",
+    "icra-dosyasi",
+    "etebligat",
+    "e-tebligat"
+   ],
+   "terms": [
+    "uyap",
+    "adalet bakanlığı",
+    "icra dosyası"
+   ],
+   "weak_aliases": [
+    "adalet",
+    "mahkeme"
+   ]
+  },
+  {
+   "id": "mhrs",
+   "name": "MHRS",
+   "sector": "health",
+   "gov": true,
+   "domains": [
+    "mhrs.gov.tr",
+    "saglik.gov.tr"
+   ],
+   "aliases": [
+    "mhrs",
+    "hastanerandevu"
+   ],
+   "terms": [
+    "mhrs",
+    "merkezi hekim randevu"
+   ]
+  },
+  {
+   "id": "enabiz",
+   "name": "e-Nabız",
+   "sector": "health",
+   "gov": true,
+   "domains": [
+    "enabiz.gov.tr",
+    "saglik.gov.tr"
+   ],
+   "aliases": [
+    "enabiz",
+    "e-nabiz"
+   ],
+   "terms": [
+    "e-nabız"
+   ]
+  },
+  {
+   "id": "meb",
+   "name": "MEB / e-Okul",
+   "sector": "education",
+   "gov": true,
+   "domains": [
+    "meb.gov.tr",
+    "eba.gov.tr"
+   ],
+   "aliases": [
+    "eokul",
+    "e-okul",
+    "meb",
+    "eba",
+    "milliegitim"
+   ],
+   "terms": [
+    "e-okul",
+    "milli eğitim bakanlığı",
+    "eba"
+   ]
+  },
+  {
+   "id": "osym",
+   "name": "ÖSYM",
+   "sector": "education",
+   "gov": true,
+   "domains": [
+    "osym.gov.tr"
+   ],
+   "aliases": [
+    "osym",
+    "ais-osym",
+    "sinavsonuc",
+    "yks",
+    "kpss",
+    "ales",
+    "yds"
+   ],
+   "terms": [
+    "ösym",
+    "kpss",
+    "yks"
+   ]
+  },
+  {
+   "id": "yok",
+   "name": "YÖK",
+   "sector": "education",
+   "gov": true,
+   "domains": [
+    "yok.gov.tr"
+   ],
+   "weak_aliases": [
+    "yok"
+   ],
+   "aliases": [
+    "yokatlas",
+    "edevletmezun"
+   ],
+   "terms": [
+    "yükseköğretim kurulu"
+   ]
+  },
+  {
+   "id": "kyk",
+   "name": "KYK / GSB",
+   "sector": "education",
+   "gov": true,
+   "domains": [
+    "gsb.gov.tr",
+    "kyk.gsb.gov.tr"
+   ],
+   "aliases": [
+    "kyk",
+    "kykburs",
+    "kyk-burs",
+    "gsb",
+    "kredivelurtlar",
+    "kredi-yurtlar"
+   ],
+   "terms": [
+    "kredi ve yurtlar",
+    "kyk bursu"
+   ]
+  },
+  {
+   "id": "iskur",
+   "name": "İŞKUR",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "iskur.gov.tr"
+   ],
+   "aliases": [
+    "iskur",
+    "issizlikmaasi",
+    "issizlik-maasi"
+   ],
+   "terms": [
+    "işkur",
+    "işsizlik maaşı"
+   ]
+  },
+  {
+   "id": "toki",
+   "name": "TOKİ",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "toki.gov.tr"
+   ],
+   "aliases": [
+    "toki",
+    "tokibasvuru",
+    "sosyalkonut"
+   ],
+   "terms": [
+    "toki",
+    "sosyal konut"
+   ]
+  },
+  {
+   "id": "tkgm",
+   "name": "Tapu ve Kadastro",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "tkgm.gov.tr"
+   ],
+   "aliases": [
+    "tkgm",
+    "tapukadastro",
+    "etapu"
+   ],
+   "terms": [
+    "tapu ve kadastro"
+   ],
+   "weak_aliases": [
+    "tapu"
+   ]
+  },
+  {
+   "id": "afad",
+   "name": "AFAD",
+   "sector": "charity",
+   "gov": true,
+   "domains": [
+    "afad.gov.tr"
+   ],
+   "aliases": [
+    "afad",
+    "afetyardim",
+    "depremyardim"
+   ],
+   "terms": [
+    "afad"
+   ]
+  },
+  {
+   "id": "ticaret",
+   "name": "Ticaret Bakanlığı",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "ticaret.gov.tr"
+   ],
+   "aliases": [
+    "ticaretbakanligi",
+    "gumrukmuhafaza",
+    "gumruk-vergisi",
+    "gumrukvergisi"
+   ],
+   "terms": [
+    "ticaret bakanlığı",
+    "gümrük vergisi"
+   ]
+  },
+  {
+   "id": "tcmb",
+   "name": "Merkez Bankası",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "tcmb.gov.tr"
+   ],
+   "aliases": [
+    "tcmb",
+    "merkezbankasi"
+   ],
+   "terms": [
+    "türkiye cumhuriyet merkez bankası"
+   ]
+  },
+  {
+   "id": "spk",
+   "name": "SPK / BDDK / MASAK",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "spk.gov.tr",
+    "bddk.org.tr",
+    "masak.gov.tr"
+   ],
+   "aliases": [
+    "bddk",
+    "masak",
+    "spk"
+   ],
+   "terms": [
+    "bankacılık düzenleme ve denetleme kurumu",
+    "masak"
+   ]
+  },
+  {
+   "id": "btk",
+   "name": "BTK / USOM",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "btk.gov.tr",
+    "usom.gov.tr"
+   ],
+   "aliases": [
+    "btk",
+    "usom",
+    "imeisorgu",
+    "imei-kayit",
+    "imeikayit"
+   ],
+   "terms": [
+    "bilgi teknolojileri ve iletişim kurumu",
+    "imei kayıt"
+   ]
+  },
+  {
+   "id": "diyanet",
+   "name": "Diyanet İşleri",
+   "sector": "government",
+   "gov": true,
+   "domains": [
+    "diyanet.gov.tr",
+    "tdv.org"
+   ],
+   "aliases": [
+    "hacbasvuru",
+    "umrebasvuru"
+   ],
+   "terms": [
+    "diyanet işleri başkanlığı"
+   ],
+   "weak_aliases": [
+    "diyanet"
+   ]
+  },
+  {
+   "id": "ptt",
+   "name": "PTT",
+   "sector": "cargo",
+   "gov": true,
+   "domains": [
+    "ptt.gov.tr",
+    "pttavm.com",
+    "pttbank.gov.tr",
+    "pttkargo.com.tr"
+   ],
+   "aliases": [
+    "ptt",
+    "pttkargo",
+    "ptt-kargo",
+    "pttavm"
+   ],
+   "terms": [
+    "ptt kargo",
+    "posta ve telgraf"
+   ]
+  },
+  {
+   "id": "tcdd",
+   "name": "TCDD Taşımacılık",
+   "sector": "travel",
+   "gov": true,
+   "domains": [
+    "tcdd.gov.tr",
+    "tcddtasimacilik.gov.tr"
+   ],
+   "aliases": [
+    "tcdd",
+    "yht",
+    "yhtbilet",
+    "trenbileti"
+   ],
+   "terms": [
+    "tcdd taşımacılık",
+    "yüksek hızlı tren"
+   ]
+  },
+  {
+   "id": "millipiyango",
+   "name": "Milli Piyango",
+   "sector": "betting",
+   "domains": [
+    "millipiyangoonline.com",
+    "millipiyango.gov.tr"
+   ],
+   "aliases": [
+    "millipiyango",
+    "milli-piyango",
+    "sayisalloto",
+    "superloto"
+   ],
+   "terms": [
+    "milli piyango",
+    "sayısal loto"
+   ]
+  },
+  {
+   "id": "kizilay",
+   "name": "Türk Kızılay",
+   "sector": "charity",
+   "domains": [
+    "kizilay.org.tr"
+   ],
+   "aliases": [],
+   "terms": [
+    "türk kızılay",
+    "kızılay"
+   ],
+   "weak_aliases": [
+    "kizilay"
+   ]
+  },
+  {
+   "id": "ahbap",
+   "name": "AHBAP",
+   "sector": "charity",
+   "domains": [
+    "ahbap.org"
+   ],
+   "aliases": [
+    "ahbap"
+   ],
+   "terms": [
+    "ahbap derneği"
+   ]
+  },
+  {
+   "id": "losev",
+   "name": "LÖSEV",
+   "sector": "charity",
+   "domains": [
+    "losev.org.tr"
+   ],
+   "aliases": [
+    "losev"
+   ],
+   "terms": [
+    "lösev"
+   ]
+  },
+  {
+   "id": "tev",
+   "name": "Türk Eğitim Vakfı",
+   "sector": "charity",
+   "domains": [
+    "tev.org.tr"
+   ],
+   "aliases": [
+    "turkegitimvakfi"
+   ],
+   "terms": [
+    "türk eğitim vakfı"
+   ]
+  },
+  {
+   "id": "ibb",
+   "name": "İstanbul Büyükşehir Belediyesi",
+   "sector": "municipal",
+   "gov": true,
+   "domains": [
+    "ibb.istanbul",
+    "ibb.gov.tr",
+    "istanbul.istanbul"
+   ],
+   "aliases": [
+    "ibb",
+    "istanbulbuyuksehir"
+   ],
+   "terms": [
+    "istanbul büyükşehir belediyesi"
+   ]
+  },
+  {
+   "id": "istanbulkart",
+   "name": "İstanbulkart",
+   "sector": "municipal",
+   "domains": [
+    "istanbulkart.istanbul",
+    "belbim.istanbul"
+   ],
+   "aliases": [
+    "istanbulkart",
+    "belbim"
+   ],
+   "terms": [
+    "istanbulkart"
+   ]
+  },
+  {
+   "id": "iski",
+   "name": "İSKİ",
+   "sector": "municipal",
+   "domains": [
+    "iski.istanbul",
+    "iski.gov.tr"
+   ],
+   "aliases": [
+    "iski"
+   ],
+   "terms": [
+    "iski"
+   ]
+  },
+  {
+   "id": "igdas",
+   "name": "İGDAŞ",
+   "sector": "energy",
+   "domains": [
+    "igdas.istanbul",
+    "igdas.com.tr"
+   ],
+   "aliases": [
+    "igdas"
+   ],
+   "terms": [
+    "igdaş"
+   ]
+  },
+  {
+   "id": "aski",
+   "name": "ASKİ",
+   "sector": "municipal",
+   "gov": true,
+   "domains": [
+    "aski.gov.tr"
+   ],
+   "aliases": [
+    "aski"
+   ],
+   "terms": [
+    "aski"
+   ]
+  },
+  {
+   "id": "izsu",
+   "name": "İZSU",
+   "sector": "municipal",
+   "gov": true,
+   "domains": [
+    "izsu.gov.tr",
+    "izmir.bel.tr"
+   ],
+   "aliases": [
+    "izsu"
+   ],
+   "terms": [
+    "izsu"
+   ]
+  },
+  {
+   "id": "ankarakart",
+   "name": "Ankarakart / EGO",
+   "sector": "municipal",
+   "gov": true,
+   "domains": [
+    "ego.gov.tr",
+    "ankara.bel.tr"
+   ],
+   "aliases": [
+    "ankarakart",
+    "egokart"
+   ],
+   "terms": [
+    "ankarakart"
+   ]
+  },
+  {
+   "id": "izmirimkart",
+   "name": "İzmirimKart",
+   "sector": "municipal",
+   "gov": true,
+   "domains": [
+    "izmirimkart.com.tr",
+    "izmir.bel.tr",
+    "eshot.gov.tr"
+   ],
+   "aliases": [
+    "izmirimkart",
+    "eshot"
+   ],
+   "terms": [
+    "izmirimkart"
+   ]
+  },
+  {
+   "id": "yurtici",
+   "name": "Yurtiçi Kargo",
+   "sector": "cargo",
+   "domains": [
+    "yurticikargo.com"
+   ],
+   "aliases": [
+    "yurtici",
+    "yurticikargo",
+    "yurtici-kargo"
+   ],
+   "terms": [
+    "yurtiçi kargo"
+   ]
+  },
+  {
+   "id": "aras",
+   "name": "Aras Kargo",
+   "sector": "cargo",
+   "domains": [
+    "araskargo.com.tr",
+    "araskargo.com"
+   ],
+   "aliases": [
+    "araskargo",
+    "aras-kargo"
+   ],
+   "weak_aliases": [
+    "aras"
+   ],
+   "terms": [
+    "aras kargo"
+   ]
+  },
+  {
+   "id": "mng",
+   "name": "MNG Kargo",
+   "sector": "cargo",
+   "domains": [
+    "mngkargo.com.tr",
+    "dhlecommerce.com.tr"
+   ],
+   "aliases": [
+    "mngkargo",
+    "mng-kargo"
+   ],
+   "weak_aliases": [
+    "mng"
+   ],
+   "terms": [
+    "mng kargo"
+   ]
+  },
+  {
+   "id": "surat",
+   "name": "Sürat Kargo",
+   "sector": "cargo",
+   "domains": [
+    "suratkargo.com.tr"
+   ],
+   "aliases": [
+    "suratkargo",
+    "surat-kargo"
+   ],
+   "weak_aliases": [
+    "surat"
+   ],
+   "terms": [
+    "sürat kargo"
+   ]
+  },
+  {
+   "id": "hepsijet",
+   "name": "HepsiJET",
+   "sector": "cargo",
+   "domains": [
+    "hepsijet.com"
+   ],
+   "aliases": [
+    "hepsijet"
+   ],
+   "terms": [
+    "hepsijet"
+   ]
+  },
+  {
+   "id": "trendyolexpress",
+   "name": "Trendyol Express",
+   "sector": "cargo",
+   "domains": [
+    "trendyolexpress.com",
+    "trendyol.com"
+   ],
+   "aliases": [
+    "trendyolexpress",
+    "trendyol-express"
+   ],
+   "terms": [
+    "trendyol express"
+   ]
+  },
+  {
+   "id": "kolaygelsin",
+   "name": "Kolay Gelsin",
+   "sector": "cargo",
+   "domains": [
+    "kolaygelsin.com"
+   ],
+   "aliases": [
+    "kolaygelsin"
+   ],
+   "terms": [
+    "kolay gelsin"
+   ]
+  },
+  {
+   "id": "sendeo",
+   "name": "Sendeo",
+   "sector": "cargo",
+   "domains": [
+    "sendeo.com.tr"
+   ],
+   "aliases": [
+    "sendeo"
+   ],
+   "terms": [
+    "sendeo"
+   ]
+  },
+  {
+   "id": "ups",
+   "name": "UPS",
+   "sector": "cargo",
+   "domains": [
+    "ups.com",
+    "ups.com.tr"
+   ],
+   "aliases": [
+    "upskargo",
+    "ups-kargo"
+   ],
+   "weak_aliases": [
+    "ups"
+   ],
+   "terms": [
+    "ups kargo"
+   ]
+  },
+  {
+   "id": "dhl",
+   "name": "DHL",
+   "sector": "cargo",
+   "domains": [
+    "dhl.com",
+    "dhl.com.tr",
+    "dhl.de"
+   ],
+   "aliases": [
+    "dhl",
+    "dhlexpress"
+   ],
+   "terms": [
+    "dhl express"
+   ]
+  },
+  {
+   "id": "fedex",
+   "name": "FedEx",
+   "sector": "cargo",
+   "domains": [
+    "fedex.com"
+   ],
+   "aliases": [
+    "fedex"
+   ],
+   "terms": [
+    "fedex"
+   ]
+  },
+  {
+   "id": "horoz",
+   "name": "Horoz Lojistik",
+   "sector": "cargo",
+   "domains": [
+    "horoz.com.tr"
+   ],
+   "aliases": [
+    "horozlojistik"
+   ],
+   "terms": [
+    "horoz lojistik"
+   ]
+  },
+  {
+   "id": "trendyol",
+   "name": "Trendyol",
+   "sector": "ecommerce",
+   "domains": [
+    "trendyol.com",
+    "trendyolgo.com",
+    "dolap.com"
+   ],
+   "aliases": [
+    "trendyol",
+    "trendyolgo"
+   ],
+   "terms": [
+    "trendyol"
+   ]
+  },
+  {
+   "id": "hepsiburada",
+   "name": "Hepsiburada",
+   "sector": "ecommerce",
+   "domains": [
+    "hepsiburada.com",
+    "hepsiexpress.com"
+   ],
+   "aliases": [
+    "hepsiburada"
+   ],
+   "terms": [
+    "hepsiburada"
+   ]
+  },
+  {
+   "id": "n11",
+   "name": "n11",
+   "sector": "ecommerce",
+   "domains": [
+    "n11.com"
+   ],
+   "aliases": [
+    "n11"
+   ],
+   "terms": [
+    "n11.com"
+   ]
+  },
+  {
+   "id": "amazon",
+   "name": "Amazon",
+   "sector": "ecommerce",
+   "domains": [
+    "amazon.com.tr",
+    "amazon.com",
+    "amazon.de",
+    "amazonaws.com"
+   ],
+   "aliases": [
+    "amazon"
+   ],
+   "terms": [
+    "amazon.com.tr"
+   ]
+  },
+  {
+   "id": "ciceksepeti",
+   "name": "Çiçeksepeti",
+   "sector": "ecommerce",
+   "domains": [
+    "ciceksepeti.com"
+   ],
+   "aliases": [
+    "ciceksepeti"
+   ],
+   "terms": [
+    "çiçeksepeti"
+   ]
+  },
+  {
+   "id": "pazarama",
+   "name": "Pazarama",
+   "sector": "ecommerce",
+   "domains": [
+    "pazarama.com"
+   ],
+   "aliases": [
+    "pazarama"
+   ],
+   "terms": [
+    "pazarama"
+   ]
+  },
+  {
+   "id": "sahibinden",
+   "name": "sahibinden.com",
+   "sector": "ecommerce",
+   "domains": [
+    "sahibinden.com",
+    "shbdn.com"
+   ],
+   "aliases": [
+    "sahibinden"
+   ],
+   "terms": [
+    "sahibinden.com"
+   ]
+  },
+  {
+   "id": "arabam",
+   "name": "arabam.com",
+   "sector": "ecommerce",
+   "domains": [
+    "arabam.com"
+   ],
+   "aliases": [
+    "arabamcom"
+   ],
+   "weak_aliases": [
+    "arabam"
+   ],
+   "terms": [
+    "arabam.com"
+   ]
+  },
+  {
+   "id": "letgo",
+   "name": "letgo",
+   "sector": "ecommerce",
+   "domains": [
+    "letgo.com"
+   ],
+   "aliases": [
+    "letgo"
+   ],
+   "terms": [
+    "letgo"
+   ]
+  },
+  {
+   "id": "dolap",
+   "name": "Dolap",
+   "sector": "ecommerce",
+   "domains": [
+    "dolap.com"
+   ],
+   "weak_aliases": [
+    "dolap"
+   ],
+   "aliases": [
+    "dolapcom"
+   ],
+   "terms": []
+  },
+  {
+   "id": "migros",
+   "name": "Migros",
+   "sector": "ecommerce",
+   "domains": [
+    "migros.com.tr",
+    "macroonline.com.tr"
+   ],
+   "aliases": [
+    "migros",
+    "migrosmoney",
+    "money-kart"
+   ],
+   "terms": [
+    "migros",
+    "money kart"
+   ]
+  },
+  {
+   "id": "a101",
+   "name": "A101",
+   "sector": "ecommerce",
+   "domains": [
+    "a101.com.tr"
+   ],
+   "aliases": [
+    "a101"
+   ],
+   "terms": [
+    "a101"
+   ]
+  },
+  {
+   "id": "bim",
+   "name": "BİM",
+   "sector": "ecommerce",
+   "domains": [
+    "bim.com.tr"
+   ],
+   "weak_aliases": [
+    "bim"
+   ],
+   "aliases": [
+    "bimmarket",
+    "bimaktuel",
+    "bim-aktuel"
+   ],
+   "terms": [
+    "bim aktüel"
+   ]
+  },
+  {
+   "id": "sok",
+   "name": "ŞOK Market",
+   "sector": "ecommerce",
+   "domains": [
+    "sokmarket.com.tr",
+    "cepte-sok.com"
+   ],
+   "aliases": [
+    "sokmarket",
+    "ceptesok",
+    "cepte-sok"
+   ],
+   "weak_aliases": [
+    "sok"
+   ],
+   "terms": [
+    "şok market",
+    "cepte şok"
+   ]
+  },
+  {
+   "id": "carrefoursa",
+   "name": "CarrefourSA",
+   "sector": "ecommerce",
+   "domains": [
+    "carrefoursa.com"
+   ],
+   "aliases": [
+    "carrefoursa",
+    "carrefour"
+   ],
+   "terms": [
+    "carrefoursa"
+   ]
+  },
+  {
+   "id": "getir",
+   "name": "Getir",
+   "sector": "ecommerce",
+   "domains": [
+    "getir.com"
+   ],
+   "aliases": [
+    "getirapp"
+   ],
+   "weak_aliases": [
+    "getir"
+   ],
+   "terms": []
+  },
+  {
+   "id": "yemeksepeti",
+   "name": "Yemeksepeti",
+   "sector": "ecommerce",
+   "domains": [
+    "yemeksepeti.com"
+   ],
+   "aliases": [
+    "yemeksepeti",
+    "banabi"
+   ],
+   "terms": [
+    "yemeksepeti"
+   ]
+  },
+  {
+   "id": "teknosa",
+   "name": "Teknosa",
+   "sector": "ecommerce",
+   "domains": [
+    "teknosa.com"
+   ],
+   "aliases": [
+    "teknosa"
+   ],
+   "terms": [
+    "teknosa"
+   ]
+  },
+  {
+   "id": "mediamarkt",
+   "name": "MediaMarkt",
+   "sector": "ecommerce",
+   "domains": [
+    "mediamarkt.com.tr"
+   ],
+   "aliases": [
+    "mediamarkt"
+   ],
+   "terms": [
+    "mediamarkt"
+   ]
+  },
+  {
+   "id": "vatan",
+   "name": "Vatan Bilgisayar",
+   "sector": "ecommerce",
+   "domains": [
+    "vatanbilgisayar.com"
+   ],
+   "aliases": [
+    "vatanbilgisayar"
+   ],
+   "terms": [
+    "vatan bilgisayar"
+   ]
+  },
+  {
+   "id": "arcelik",
+   "name": "Arçelik / Beko",
+   "sector": "ecommerce",
+   "domains": [
+    "arcelik.com.tr",
+    "beko.com.tr",
+    "arcelikglobal.com"
+   ],
+   "aliases": [
+    "arcelik",
+    "beko"
+   ],
+   "terms": [
+    "arçelik"
+   ]
+  },
+  {
+   "id": "vestel",
+   "name": "Vestel",
+   "sector": "ecommerce",
+   "domains": [
+    "vestel.com.tr"
+   ],
+   "aliases": [
+    "vestel"
+   ],
+   "terms": [
+    "vestel"
+   ]
+  },
+  {
+   "id": "lcwaikiki",
+   "name": "LC Waikiki",
+   "sector": "ecommerce",
+   "domains": [
+    "lcwaikiki.com",
+    "lcw.com"
+   ],
+   "aliases": [
+    "lcwaikiki",
+    "lcw"
+   ],
+   "terms": [
+    "lc waikiki"
+   ]
+  },
+  {
+   "id": "defacto",
+   "name": "DeFacto",
+   "sector": "ecommerce",
+   "domains": [
+    "defacto.com.tr"
+   ],
+   "aliases": [
+    "defacto"
+   ],
+   "terms": [
+    "defacto"
+   ]
+  },
+  {
+   "id": "koton",
+   "name": "Koton",
+   "sector": "ecommerce",
+   "domains": [
+    "koton.com"
+   ],
+   "aliases": [
+    "koton"
+   ],
+   "terms": []
+  },
+  {
+   "id": "boyner",
+   "name": "Boyner",
+   "sector": "ecommerce",
+   "domains": [
+    "boyner.com.tr"
+   ],
+   "aliases": [
+    "boyner"
+   ],
+   "terms": [
+    "boyner"
+   ]
+  },
+  {
+   "id": "flo",
+   "name": "FLO",
+   "sector": "ecommerce",
+   "domains": [
+    "flo.com.tr"
+   ],
+   "weak_aliases": [
+    "flo"
+   ],
+   "aliases": [
+    "flomagaza"
+   ],
+   "terms": []
+  },
+  {
+   "id": "gratis",
+   "name": "Gratis",
+   "sector": "ecommerce",
+   "domains": [
+    "gratis.com"
+   ],
+   "weak_aliases": [
+    "gratis"
+   ],
+   "aliases": [],
+   "terms": []
+  },
+  {
+   "id": "watsons",
+   "name": "Watsons",
+   "sector": "ecommerce",
+   "domains": [
+    "watsons.com.tr"
+   ],
+   "aliases": [
+    "watsons"
+   ],
+   "terms": []
+  },
+  {
+   "id": "ikea",
+   "name": "IKEA",
+   "sector": "ecommerce",
+   "domains": [
+    "ikea.com.tr",
+    "ikea.com"
+   ],
+   "aliases": [
+    "ikea"
+   ],
+   "terms": []
+  },
+  {
+   "id": "koctas",
+   "name": "Koçtaş",
+   "sector": "ecommerce",
+   "domains": [
+    "koctas.com.tr"
+   ],
+   "aliases": [
+    "koctas"
+   ],
+   "terms": [
+    "koçtaş"
+   ]
+  },
+  {
+   "id": "decathlon",
+   "name": "Decathlon",
+   "sector": "ecommerce",
+   "domains": [
+    "decathlon.com.tr"
+   ],
+   "aliases": [
+    "decathlon"
+   ],
+   "terms": []
+  },
+  {
+   "id": "turkcell",
+   "name": "Turkcell",
+   "sector": "telecom",
+   "domains": [
+    "turkcell.com.tr",
+    "bip.com",
+    "fizy.com",
+    "tvplus.com.tr",
+    "superonline.net",
+    "dergilik.com.tr"
+   ],
+   "aliases": [
+    "turkcell",
+    "superonline",
+    "fizy",
+    "tvplus"
+   ],
+   "terms": [
+    "turkcell",
+    "superonline"
+   ]
+  },
+  {
+   "id": "vodafone",
+   "name": "Vodafone",
+   "sector": "telecom",
+   "domains": [
+    "vodafone.com.tr",
+    "vodafone.com"
+   ],
+   "aliases": [
+    "vodafone"
+   ],
+   "terms": [
+    "vodafone"
+   ]
+  },
+  {
+   "id": "turktelekom",
+   "name": "Türk Telekom",
+   "sector": "telecom",
+   "domains": [
+    "turktelekom.com.tr",
+    "ttnet.com.tr",
+    "tivibu.com.tr"
+   ],
+   "aliases": [
+    "turktelekom",
+    "ttnet",
+    "tivibu"
+   ],
+   "terms": [
+    "türk telekom",
+    "tivibu"
+   ]
+  },
+  {
+   "id": "turknet",
+   "name": "TurkNet",
+   "sector": "telecom",
+   "domains": [
+    "turk.net"
+   ],
+   "aliases": [
+    "turknet"
+   ],
+   "terms": [
+    "turknet"
+   ]
+  },
+  {
+   "id": "digiturk",
+   "name": "Digiturk / beIN",
+   "sector": "telecom",
+   "domains": [
+    "digiturk.com.tr",
+    "beinconnect.com.tr",
+    "todtv.com.tr",
+    "tod.tv"
+   ],
+   "aliases": [
+    "digiturk",
+    "beinconnect",
+    "beinsports"
+   ],
+   "terms": [
+    "digiturk",
+    "bein connect",
+    "tod"
+   ]
+  },
+  {
+   "id": "dsmart",
+   "name": "D-Smart",
+   "sector": "telecom",
+   "domains": [
+    "dsmart.com.tr",
+    "dsmartgo.com.tr"
+   ],
+   "aliases": [
+    "dsmart",
+    "d-smart"
+   ],
+   "terms": [
+    "d-smart"
+   ]
+  },
+  {
+   "id": "enerjisa",
+   "name": "Enerjisa",
+   "sector": "energy",
+   "domains": [
+    "enerjisa.com.tr",
+    "bedas.com.tr",
+    "ayedas.com.tr",
+    "baskentedas.com.tr",
+    "toroslaredas.com.tr"
+   ],
+   "aliases": [
+    "enerjisa",
+    "bedas",
+    "ayedas",
+    "baskentedas",
+    "toroslaredas"
+   ],
+   "terms": [
+    "enerjisa",
+    "bedaş",
+    "ayedaş"
+   ]
+  },
+  {
+   "id": "ckenerji",
+   "name": "CK Enerji",
+   "sector": "energy",
+   "domains": [
+    "ckenerji.com.tr",
+    "ckbogazici.com.tr",
+    "ckakdeniz.com.tr",
+    "ckuludag.com.tr"
+   ],
+   "aliases": [
+    "ckenerji",
+    "ckbogazici",
+    "ckakdeniz"
+   ],
+   "terms": [
+    "ck enerji"
+   ]
+  },
+  {
+   "id": "aydem",
+   "name": "Aydem / Gediz",
+   "sector": "energy",
+   "domains": [
+    "aydem.com.tr",
+    "aydemperakende.com.tr",
+    "gdzelektrik.com.tr",
+    "gediz.com.tr"
+   ],
+   "aliases": [
+    "aydem",
+    "gdzelektrik",
+    "gedizelektrik"
+   ],
+   "terms": [
+    "aydem",
+    "gediz elektrik"
+   ]
+  },
+  {
+   "id": "uludag",
+   "name": "Uludağ Elektrik",
+   "sector": "energy",
+   "domains": [
+    "uludagelektrik.com.tr",
+    "uedas.com.tr"
+   ],
+   "aliases": [
+    "uludagelektrik",
+    "uedas"
+   ],
+   "terms": [
+    "uludağ elektrik"
+   ]
+  },
+  {
+   "id": "baskentgaz",
+   "name": "Başkentgaz",
+   "sector": "energy",
+   "domains": [
+    "baskentgaz.com.tr"
+   ],
+   "aliases": [
+    "baskentgaz"
+   ],
+   "terms": [
+    "başkentgaz"
+   ]
+  },
+  {
+   "id": "izgaz",
+   "name": "İzmirgaz / İzgaz",
+   "sector": "energy",
+   "domains": [
+    "izgaz.com.tr",
+    "izmirgaz.com.tr"
+   ],
+   "aliases": [
+    "izgaz",
+    "izmirgaz"
+   ],
+   "terms": [
+    "izgaz",
+    "izmirgaz"
+   ]
+  },
+  {
+   "id": "aksadogalgaz",
+   "name": "Aksa Doğalgaz",
+   "sector": "energy",
+   "domains": [
+    "aksadogalgaz.com.tr"
+   ],
+   "aliases": [
+    "aksadogalgaz",
+    "aksagaz"
+   ],
+   "terms": [
+    "aksa doğalgaz"
+   ]
+  },
+  {
+   "id": "botas",
+   "name": "BOTAŞ",
+   "sector": "energy",
+   "gov": true,
+   "domains": [
+    "botas.gov.tr"
+   ],
+   "aliases": [
+    "botas"
+   ],
+   "terms": [
+    "botaş"
+   ]
+  },
+  {
+   "id": "thy",
+   "name": "Türk Hava Yolları",
+   "sector": "travel",
+   "domains": [
+    "turkishairlines.com",
+    "thy.com",
+    "milesandsmiles.com"
+   ],
+   "aliases": [
+    "turkishairlines",
+    "turkhavayollari",
+    "milesandsmiles",
+    "milessmiles"
+   ],
+   "weak_aliases": [
+    "thy"
+   ],
+   "terms": [
+    "türk hava yolları",
+    "turkish airlines",
+    "miles&smiles"
+   ]
+  },
+  {
+   "id": "pegasus",
+   "name": "Pegasus",
+   "sector": "travel",
+   "domains": [
+    "flypgs.com",
+    "pegasusairlines.com"
+   ],
+   "aliases": [
+    "flypgs",
+    "pegasusairlines"
+   ],
+   "weak_aliases": [
+    "pegasus"
+   ],
+   "terms": [
+    "pegasus hava yolları"
+   ]
+  },
+  {
+   "id": "ajet",
+   "name": "AJet",
+   "sector": "travel",
+   "domains": [
+    "ajet.com"
+   ],
+   "aliases": [
+    "ajet",
+    "anadolujet"
+   ],
+   "terms": [
+    "ajet",
+    "anadolujet"
+   ]
+  },
+  {
+   "id": "sunexpress",
+   "name": "SunExpress",
+   "sector": "travel",
+   "domains": [
+    "sunexpress.com"
+   ],
+   "aliases": [
+    "sunexpress"
+   ],
+   "terms": [
+    "sunexpress"
+   ]
+  },
+  {
+   "id": "obilet",
+   "name": "obilet",
+   "sector": "travel",
+   "domains": [
+    "obilet.com"
+   ],
+   "aliases": [
+    "obilet"
+   ],
+   "terms": [
+    "obilet"
+   ]
+  },
+  {
+   "id": "enuygun",
+   "name": "Enuygun",
+   "sector": "travel",
+   "domains": [
+    "enuygun.com"
+   ],
+   "aliases": [
+    "enuygun"
+   ],
+   "terms": [
+    "enuygun"
+   ]
+  },
+  {
+   "id": "biletix",
+   "name": "Biletix",
+   "sector": "travel",
+   "domains": [
+    "biletix.com"
+   ],
+   "aliases": [
+    "biletix"
+   ],
+   "terms": [
+    "biletix"
+   ]
+  },
+  {
+   "id": "passo",
+   "name": "Passo",
+   "sector": "travel",
+   "domains": [
+    "passo.com.tr"
+   ],
+   "aliases": [
+    "passokart",
+    "passo-kart"
+   ],
+   "weak_aliases": [
+    "passo"
+   ],
+   "terms": [
+    "passolig"
+   ]
+  },
+  {
+   "id": "kamilkoc",
+   "name": "Kamil Koç",
+   "sector": "travel",
+   "domains": [
+    "kamilkoc.com.tr"
+   ],
+   "aliases": [
+    "kamilkoc"
+   ],
+   "terms": [
+    "kamil koç"
+   ]
+  },
+  {
+   "id": "metroturizm",
+   "name": "Metro Turizm",
+   "sector": "travel",
+   "domains": [
+    "metroturizm.com.tr"
+   ],
+   "aliases": [
+    "metroturizm"
+   ],
+   "terms": [
+    "metro turizm"
+   ]
+  },
+  {
+   "id": "pamukkale",
+   "name": "Pamukkale Turizm",
+   "sector": "travel",
+   "domains": [
+    "pamukkale.com.tr"
+   ],
+   "aliases": [
+    "pamukkaleturizm"
+   ],
+   "terms": [
+    "pamukkale turizm"
+   ]
+  },
+  {
+   "id": "etstur",
+   "name": "ETS Tur",
+   "sector": "travel",
+   "domains": [
+    "etstur.com"
+   ],
+   "aliases": [
+    "etstur"
+   ],
+   "terms": [
+    "ets tur"
+   ]
+  },
+  {
+   "id": "jollytur",
+   "name": "Jolly Tur",
+   "sector": "travel",
+   "domains": [
+    "jollytur.com"
+   ],
+   "aliases": [
+    "jollytur"
+   ],
+   "terms": [
+    "jolly tur"
+   ]
+  },
+  {
+   "id": "tatilbudur",
+   "name": "Tatilbudur",
+   "sector": "travel",
+   "domains": [
+    "tatilbudur.com"
+   ],
+   "aliases": [
+    "tatilbudur"
+   ],
+   "terms": [
+    "tatilbudur"
+   ]
+  },
+  {
+   "id": "istairport",
+   "name": "İstanbul Havalimanı",
+   "sector": "travel",
+   "domains": [
+    "istairport.com"
+   ],
+   "aliases": [
+    "istairport"
+   ],
+   "terms": [
+    "istanbul havalimanı"
+   ]
+  },
+  {
+   "id": "marti",
+   "name": "Martı",
+   "sector": "travel",
+   "domains": [
+    "marti.tech"
+   ],
+   "aliases": [
+    "martiscooter"
+   ],
+   "terms": []
+  },
+  {
+   "id": "bitaksi",
+   "name": "BiTaksi",
+   "sector": "travel",
+   "domains": [
+    "bitaksi.com"
+   ],
+   "aliases": [
+    "bitaksi"
+   ],
+   "terms": [
+    "bitaksi"
+   ]
+  },
+  {
+   "id": "anadolusigorta",
+   "name": "Anadolu Sigorta",
+   "sector": "insurance",
+   "domains": [
+    "anadolusigorta.com.tr"
+   ],
+   "aliases": [
+    "anadolusigorta"
+   ],
+   "terms": [
+    "anadolu sigorta"
+   ]
+  },
+  {
+   "id": "allianz",
+   "name": "Allianz",
+   "sector": "insurance",
+   "domains": [
+    "allianz.com.tr",
+    "allianz.com"
+   ],
+   "aliases": [
+    "allianz"
+   ],
+   "terms": [
+    "allianz"
+   ]
+  },
+  {
+   "id": "axa",
+   "name": "AXA Sigorta",
+   "sector": "insurance",
+   "domains": [
+    "axasigorta.com.tr",
+    "axa.com.tr",
+    "axa.com"
+   ],
+   "aliases": [
+    "axasigorta"
+   ],
+   "weak_aliases": [
+    "axa"
+   ],
+   "terms": [
+    "axa sigorta"
+   ]
+  },
+  {
+   "id": "turkiyesigorta",
+   "name": "Türkiye Sigorta",
+   "sector": "insurance",
+   "domains": [
+    "turkiyesigorta.com.tr",
+    "turkiyehayatemeklilik.com.tr"
+   ],
+   "aliases": [
+    "turkiyesigorta"
+   ],
+   "terms": [
+    "türkiye sigorta"
+   ]
+  },
+  {
+   "id": "mapfre",
+   "name": "Mapfre",
+   "sector": "insurance",
+   "domains": [
+    "mapfre.com.tr"
+   ],
+   "aliases": [
+    "mapfre"
+   ],
+   "terms": [
+    "mapfre"
+   ]
+  },
+  {
+   "id": "hdi",
+   "name": "HDI Sigorta",
+   "sector": "insurance",
+   "domains": [
+    "hdisigorta.com.tr"
+   ],
+   "aliases": [
+    "hdisigorta"
+   ],
+   "terms": [
+    "hdi sigorta"
+   ]
+  },
+  {
+   "id": "sompo",
+   "name": "Sompo Sigorta",
+   "sector": "insurance",
+   "domains": [
+    "somposigorta.com.tr"
+   ],
+   "aliases": [
+    "somposigorta"
+   ],
+   "terms": [
+    "sompo sigorta"
+   ]
+  },
+  {
+   "id": "aksigorta",
+   "name": "Aksigorta",
+   "sector": "insurance",
+   "domains": [
+    "aksigorta.com.tr"
+   ],
+   "aliases": [
+    "aksigorta"
+   ],
+   "terms": [
+    "aksigorta"
+   ]
+  },
+  {
+   "id": "anadoluhayat",
+   "name": "Anadolu Hayat Emeklilik",
+   "sector": "insurance",
+   "domains": [
+    "anadoluhayat.com.tr"
+   ],
+   "aliases": [
+    "anadoluhayat"
+   ],
+   "terms": [
+    "anadolu hayat"
+   ]
+  },
+  {
+   "id": "agesa",
+   "name": "AgeSA",
+   "sector": "insurance",
+   "domains": [
+    "agesa.com.tr"
+   ],
+   "aliases": [
+    "agesa"
+   ],
+   "terms": [
+    "agesa"
+   ]
+  },
+  {
+   "id": "iddaa",
+   "name": "İddaa",
+   "sector": "betting",
+   "domains": [
+    "iddaa.com"
+   ],
+   "aliases": [
+    "iddaa"
+   ],
+   "terms": [
+    "iddaa"
+   ]
+  },
+  {
+   "id": "nesine",
+   "name": "Nesine",
+   "sector": "betting",
+   "domains": [
+    "nesine.com"
+   ],
+   "aliases": [
+    "nesine"
+   ],
+   "terms": [
+    "nesine"
+   ]
+  },
+  {
+   "id": "misli",
+   "name": "Misli",
+   "sector": "betting",
+   "domains": [
+    "misli.com"
+   ],
+   "aliases": [
+    "mislicom"
+   ],
+   "weak_aliases": [
+    "misli"
+   ],
+   "terms": [
+    "misli.com"
+   ]
+  },
+  {
+   "id": "bilyoner",
+   "name": "Bilyoner",
+   "sector": "betting",
+   "domains": [
+    "bilyoner.com"
+   ],
+   "aliases": [
+    "bilyoner"
+   ],
+   "terms": [
+    "bilyoner"
+   ]
+  },
+  {
+   "id": "tjk",
+   "name": "TJK",
+   "sector": "betting",
+   "domains": [
+    "tjk.org",
+    "ekuri.com"
+   ],
+   "aliases": [
+    "tjk",
+    "ekuri"
+   ],
+   "terms": [
+    "türkiye jokey kulübü"
+   ]
+  },
+  {
+   "id": "acibadem",
+   "name": "Acıbadem",
+   "sector": "health",
+   "domains": [
+    "acibadem.com.tr",
+    "bupaacibadem.com.tr"
+   ],
+   "aliases": [],
+   "terms": [
+    "acıbadem"
+   ],
+   "weak_aliases": [
+    "acibadem"
+   ]
+  },
+  {
+   "id": "medicalpark",
+   "name": "Medical Park",
+   "sector": "health",
+   "domains": [
+    "medicalpark.com.tr"
+   ],
+   "aliases": [
+    "medicalpark"
+   ],
+   "terms": [
+    "medical park"
+   ]
+  },
+  {
+   "id": "memorial",
+   "name": "Memorial",
+   "sector": "health",
+   "domains": [
+    "memorial.com.tr"
+   ],
+   "aliases": [
+    "memorialhastanesi"
+   ],
+   "terms": [
+    "memorial hastanesi"
+   ]
+  },
+  {
+   "id": "togg",
+   "name": "Togg",
+   "sector": "automotive",
+   "domains": [
+    "togg.com.tr",
+    "trumore.com"
+   ],
+   "aliases": [
+    "togg"
+   ],
+   "terms": [
+    "togg"
+   ]
+  },
+  {
+   "id": "google",
+   "name": "Google",
+   "sector": "digital",
+   "domains": [
+    "google.com",
+    "google.com.tr",
+    "gmail.com",
+    "youtube.com",
+    "googleusercontent.com",
+    "gstatic.com",
+    "googleapis.com",
+    "blogspot.com",
+    "withgoogle.com"
+   ],
+   "aliases": [
+    "google",
+    "gmail"
+   ],
+   "terms": [
+    "google hesabı",
+    "gmail"
+   ]
+  },
+  {
+   "id": "youtube",
+   "name": "YouTube",
+   "sector": "digital",
+   "domains": [
+    "youtube.com",
+    "youtu.be",
+    "google.com"
+   ],
+   "aliases": [
+    "youtube"
+   ],
+   "terms": []
+  },
+  {
+   "id": "microsoft",
+   "name": "Microsoft",
+   "sector": "digital",
+   "domains": [
+    "microsoft.com",
+    "live.com",
+    "office.com",
+    "microsoftonline.com",
+    "outlook.com",
+    "office365.com",
+    "sharepoint.com",
+    "onedrive.com",
+    "hotmail.com",
+    "msn.com",
+    "azure.com",
+    "windows.net"
+   ],
+   "aliases": [
+    "microsoft",
+    "office365",
+    "onedrive",
+    "sharepoint",
+    "hotmail"
+   ],
+   "terms": [
+    "microsoft hesabı",
+    "office 365",
+    "outlook"
+   ],
+   "weak_aliases": [
+    "outlook"
+   ]
+  },
+  {
+   "id": "apple",
+   "name": "Apple",
+   "sector": "digital",
+   "domains": [
+    "apple.com",
+    "icloud.com",
+    "me.com"
+   ],
+   "aliases": [
+    "appleid",
+    "apple-id",
+    "icloud"
+   ],
+   "weak_aliases": [
+    "apple"
+   ],
+   "terms": [
+    "apple kimliği",
+    "apple id",
+    "icloud"
+   ]
+  },
+  {
+   "id": "meta",
+   "name": "Meta / Facebook",
+   "sector": "digital",
+   "domains": [
+    "facebook.com",
+    "fb.com",
+    "meta.com",
+    "messenger.com",
+    "fb.me",
+    "metastatus.com"
+   ],
+   "aliases": [
+    "facebook",
+    "metabusiness",
+    "meta-business",
+    "fbcopyright"
+   ],
+   "weak_aliases": [
+    "meta"
+   ],
+   "terms": [
+    "facebook",
+    "meta business"
+   ]
+  },
+  {
+   "id": "instagram",
+   "name": "Instagram",
+   "sector": "digital",
+   "domains": [
+    "instagram.com",
+    "facebook.com"
+   ],
+   "aliases": [
+    "instagram",
+    "insta-verify",
+    "instaverify",
+    "igverify"
+   ],
+   "terms": [
+    "instagram"
+   ]
+  },
+  {
+   "id": "whatsapp",
+   "name": "WhatsApp",
+   "sector": "digital",
+   "domains": [
+    "whatsapp.com",
+    "whatsapp.net",
+    "wa.me"
+   ],
+   "aliases": [
+    "whatsapp",
+    "watsap",
+    "whatsap"
+   ],
+   "terms": [
+    "whatsapp"
+   ]
+  },
+  {
+   "id": "telegram",
+   "name": "Telegram",
+   "sector": "digital",
+   "domains": [
+    "telegram.org",
+    "t.me",
+    "telegram.me"
+   ],
+   "aliases": [
+    "telegram"
+   ],
+   "terms": []
+  },
+  {
+   "id": "x",
+   "name": "X / Twitter",
+   "sector": "digital",
+   "domains": [
+    "x.com",
+    "twitter.com",
+    "t.co"
+   ],
+   "aliases": [
+    "twitter"
+   ],
+   "terms": []
+  },
+  {
+   "id": "tiktok",
+   "name": "TikTok",
+   "sector": "digital",
+   "domains": [
+    "tiktok.com"
+   ],
+   "aliases": [
+    "tiktok"
+   ],
+   "terms": []
+  },
+  {
+   "id": "linkedin",
+   "name": "LinkedIn",
+   "sector": "digital",
+   "domains": [
+    "linkedin.com",
+    "lnkd.in"
+   ],
+   "aliases": [
+    "linkedin"
+   ],
+   "terms": []
+  },
+  {
+   "id": "discord",
+   "name": "Discord",
+   "sector": "digital",
+   "domains": [
+    "discord.com",
+    "discord.gg",
+    "discordapp.com"
+   ],
+   "aliases": [
+    "discord",
+    "discordnitro",
+    "discord-nitro"
+   ],
+   "terms": [
+    "discord nitro"
+   ]
+  },
+  {
+   "id": "steam",
+   "name": "Steam",
+   "sector": "digital",
+   "domains": [
+    "steampowered.com",
+    "steamcommunity.com",
+    "steamgames.com"
+   ],
+   "aliases": [
+    "steamcommunity",
+    "steampowered",
+    "steamgift"
+   ],
+   "weak_aliases": [
+    "steam"
+   ],
+   "terms": [
+    "steam community"
+   ]
+  },
+  {
+   "id": "epicgames",
+   "name": "Epic Games",
+   "sector": "digital",
+   "domains": [
+    "epicgames.com"
+   ],
+   "aliases": [
+    "epicgames"
+   ],
+   "terms": []
+  },
+  {
+   "id": "riot",
+   "name": "Riot Games",
+   "sector": "digital",
+   "domains": [
+    "riotgames.com",
+    "leagueoflegends.com",
+    "playvalorant.com"
+   ],
+   "aliases": [
+    "riotgames",
+    "valorant",
+    "leagueoflegends"
+   ],
+   "terms": [
+    "valorant points"
+   ]
+  },
+  {
+   "id": "pubg",
+   "name": "PUBG Mobile",
+   "sector": "digital",
+   "domains": [
+    "pubgmobile.com",
+    "pubg.com",
+    "midasbuy.com"
+   ],
+   "aliases": [
+    "pubg",
+    "pubgmobile",
+    "midasbuy",
+    "ucbedava",
+    "uc-bedava"
+   ],
+   "terms": [
+    "pubg mobile"
+   ]
+  },
+  {
+   "id": "freefire",
+   "name": "Free Fire",
+   "sector": "digital",
+   "domains": [
+    "garena.com",
+    "ff.garena.com"
+   ],
+   "aliases": [
+    "freefire",
+    "garena"
+   ],
+   "terms": [
+    "free fire"
+   ]
+  },
+  {
+   "id": "roblox",
+   "name": "Roblox",
+   "sector": "digital",
+   "domains": [
+    "roblox.com"
+   ],
+   "aliases": [
+    "roblox",
+    "robux"
+   ],
+   "terms": [
+    "robux"
+   ]
+  },
+  {
+   "id": "netflix",
+   "name": "Netflix",
+   "sector": "digital",
+   "domains": [
+    "netflix.com"
+   ],
+   "aliases": [
+    "netflix"
+   ],
+   "terms": [
+    "netflix"
+   ]
+  },
+  {
+   "id": "spotify",
+   "name": "Spotify",
+   "sector": "digital",
+   "domains": [
+    "spotify.com"
+   ],
+   "aliases": [
+    "spotify"
+   ],
+   "terms": []
+  },
+  {
+   "id": "disneyplus",
+   "name": "Disney+",
+   "sector": "digital",
+   "domains": [
+    "disneyplus.com"
+   ],
+   "aliases": [
+    "disneyplus"
+   ],
+   "terms": []
+  },
+  {
+   "id": "exxen",
+   "name": "Exxen",
+   "sector": "digital",
+   "domains": [
+    "exxen.com"
+   ],
+   "aliases": [
+    "exxen"
+   ],
+   "terms": [
+    "exxen"
+   ]
+  },
+  {
+   "id": "gain",
+   "name": "GAİN",
+   "sector": "digital",
+   "domains": [
+    "gain.tv"
+   ],
+   "aliases": [
+    "gaintv"
+   ],
+   "terms": []
+  },
+  {
+   "id": "hbomax",
+   "name": "HBO Max / BluTV",
+   "sector": "digital",
+   "domains": [
+    "max.com",
+    "hbomax.com",
+    "blutv.com"
+   ],
+   "aliases": [
+    "hbomax",
+    "blutv"
+   ],
+   "terms": [
+    "blutv"
+   ]
+  },
+  {
+   "id": "primevideo",
+   "name": "Prime Video",
+   "sector": "digital",
+   "domains": [
+    "primevideo.com",
+    "amazon.com.tr"
+   ],
+   "aliases": [
+    "primevideo"
+   ],
+   "terms": []
+  },
+  {
+   "id": "dropbox",
+   "name": "Dropbox",
+   "sector": "digital",
+   "domains": [
+    "dropbox.com"
+   ],
+   "aliases": [
+    "dropbox"
+   ],
+   "terms": []
+  },
+  {
+   "id": "docusign",
+   "name": "DocuSign",
+   "sector": "digital",
+   "domains": [
+    "docusign.com",
+    "docusign.net"
+   ],
+   "aliases": [
+    "docusign"
+   ],
+   "terms": [
+    "docusign"
+   ]
+  },
+  {
+   "id": "adobe",
+   "name": "Adobe",
+   "sector": "digital",
+   "domains": [
+    "adobe.com"
+   ],
+   "aliases": [
+    "adobe"
+   ],
+   "terms": []
+  }
+ ]
+}
