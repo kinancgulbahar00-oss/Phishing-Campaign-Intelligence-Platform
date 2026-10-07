@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     
     VIRUSTOTAL_API_KEY: str = os.getenv("VIRUSTOTAL_API_KEY", "")
     ABUSEIPDB_API_KEY: str = os.getenv("ABUSEIPDB_API_KEY", "")
+
+    # Sayfa icerigi analizi: supheli sayfa JavaScript calistirilmadan indirilir
+    PAGE_FETCH_ENABLED: bool = True
     
     CORS_ORIGINS: list[str] = [
         "http://localhost:5173",

@@ -6,12 +6,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from backend.config import settings
-from backend.models.database import init_db, SessionLocal
-from backend.core.default_whitelist import seed_default_whitelist
+from backend.models.database import init_db
 from backend.api.routes_analyze import router as analyze_router
 from backend.api.routes_ioc import router as ioc_router
 from backend.api.routes_campaign import router as campaign_router
 from backend.api.routes_list import router as list_router
+from backend.api.routes_brands import router as brands_router
 
 FRONTEND_DIST = Path(__file__).resolve().parent.parent / "dist"
 
@@ -21,13 +21,6 @@ async def lifespan(app: FastAPI):
         init_db()
     except Exception as e:
         print(f"[Warning] Database initialization error: {e}")
-          db = SessionLocal()
-    try:
-        seed_default_whitelist(db)
-    except Exception as e:
-        print(f"[Warning] Default whitelist seeding error: {e}")
-    finally:
-        db.close()
     yield
 
 app = FastAPI(
@@ -51,6 +44,7 @@ app.include_router(analyze_router)
 app.include_router(ioc_router)
 app.include_router(campaign_router)
 app.include_router(list_router)
+app.include_router(brands_router)
 
 @app.get("/health", tags=["Health"], summary="Servis sağlık kontrolü")
 def health_check():

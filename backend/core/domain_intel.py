@@ -263,3 +263,40 @@ def resolve_ip(domain):
         address = None
     _cache[key] = (time.time(), address)
     return address
+
+
+TLS_TIMEOUT = 4
+
+
+def probe_tls(host):
+    """443 portunda TLS el sikismasi dener.
+
+    'valid'   : HTTPS var ve sertifika dogrulandi
+    'invalid' : HTTPS var ama sertifika dogrulanamadi
+    'none'    : 443 portunda HTTPS sunulmuyor / baglanti kurulamadi
+    """
+    import ssl
+
+    if not host:
+        return "none"
+    key = f"tls:{host.lower()}"
+    cached = _cache.get(key)
+    if cached and time.time() - cached[0] < UNKNOWN_CACHE_TTL_SECONDS:
+        return cached[1]
+
+    status = "none"
+    try:
+        with socket.create_connection((host, 443), timeout=TLS_TIMEOUT) as sock:
+            context = ssl.create_default_context()
+            try:
+                with context.wrap_socket(sock, server_hostname=host):
+                    status = "valid"
+            except ssl.SSLCertVerificationError:
+                status = "invalid"
+            except (ssl.SSLError, OSError):
+                status = "none"
+    except (OSError, UnicodeError):
+        status = "none"
+
+    _cache[key] = (time.time(), status)
+    return status

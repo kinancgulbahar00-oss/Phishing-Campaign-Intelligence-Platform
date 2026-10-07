@@ -8,6 +8,7 @@ class ReasonItem(BaseModel):
     rule_name: str
     description: str
     severity: str = "medium"
+    contribution: Optional[int] = Field(None, description="Bulgunun skora katkisi (puan); eksi deger skoru dusurur")
 
 class IOCDetails(BaseModel):
     domain: Optional[str] = None
@@ -23,6 +24,13 @@ class IOCDetails(BaseModel):
     vt_total: Optional[int] = None
     vt_status: Optional[str] = None
     has_https: bool = False
+    tls_status: Optional[str] = Field(None, description="valid | invalid | none | unreachable")
+    target_brand: Optional[str] = Field(None, description="Taklit edildigi degerlendirilen kurum")
+    target_sector: Optional[str] = None
+    page_status: Optional[str] = Field(None, description="ok | blocked | error | disabled | unreachable")
+    page_title: Optional[str] = None
+    final_url: Optional[str] = Field(None, description="Yonlendirme sonrasi ulasilan adres")
+    page_fields: List[str] = Field(default_factory=list, description="Sayfanin istedigi hassas alanlar")
 
 class MitreTechnique(BaseModel):
     id: str
