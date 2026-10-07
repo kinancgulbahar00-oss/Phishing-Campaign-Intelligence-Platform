@@ -317,14 +317,18 @@ def collect_signals(parsed, intel):
             signals.append(_signal("vt", "VirusTotal tespiti",
                                    f"{vt_total} motordan {vt_pos} tanesi adresi zararlı veya şüpheli olarak işaretledi.",
                                    "critical", 0.95))
+        # 1-4 tespit kesin kanit sayilmaz: VirusTotal'da buyuk sitelerin bile birkac motor
+        # tarafindan yanlis isaretlenmesi yaygindir (google.com 2/93 gibi). Resmi veya koklu
+        # alan adi guven sinyalleri bu durumda skoru dusurebilir.
         elif vt_pos >= 2:
-            signals.append(_signal("vt", "VirusTotal tespiti",
-                                   f"{vt_total} motordan {vt_pos} tanesi adresi zararlı veya şüpheli olarak işaretledi.",
-                                   "high", 0.75))
+            signals.append(_signal("vt_low", "Az sayıda VirusTotal tespiti",
+                                   f"{vt_total} motordan {vt_pos} tanesi adresi zararlı veya şüpheli olarak işaretledi. "
+                                   f"Az sayıdaki tespitler büyük sitelerde de görülebilir; diğer bulgularla birlikte değerlendirin.",
+                                   "high", 0.45))
         elif vt_pos == 1:
-            signals.append(_signal("vt", "Tekil VirusTotal tespiti",
+            signals.append(_signal("vt_low", "Tekil VirusTotal tespiti",
                                    f"{vt_total} motordan 1 tanesi adresi işaretledi; tekil tespitler yanlış pozitif olabilir.",
-                                   "medium", 0.30))
+                                   "medium", 0.20))
         elif vt_total and vt_total >= 50:
             mitigations.append(_signal("vt_clean", "VirusTotal temiz",
                                        f"{vt_total} motorun hiçbiri adresi işaretlemedi.", "low", 0.85))

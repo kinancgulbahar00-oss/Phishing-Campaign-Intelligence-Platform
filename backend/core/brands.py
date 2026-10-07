@@ -384,7 +384,10 @@ def detect_brand_in_content(page):
     if strong:
         brand, term = max(strong, key=lambda x: len(x[1]))
         return {"brand": brand, "zone": "identity", "term": term}
-    if len({b["id"] for b, _ in in_logos}) == 1:
+    # Oltalama sayfalari 1-3 logo gosterir; onlarca logolu "musterilerimiz" duvarlari
+    # kurumsal tanitim sayfalarina ozgudur ve logo kaniti sayilmaz
+    logo_labels = {l.strip().lower() for l in page.get("logos", []) if l and l.strip()}
+    if len({b["id"] for b, _ in in_logos}) == 1 and len(logo_labels) <= 8:
         brand, term = in_logos[0]
         return {"brand": brand, "zone": "logo", "term": term}
     if len({b["id"] for b, _ in in_body}) == 1:

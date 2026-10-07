@@ -64,12 +64,21 @@ class _PageParser(HTMLParser):
         self.text = []
         self._in = None
         self._skip = 0
+        self._svg = 0
+        self._seen = set()
+        self._svg_title = None
 
     def handle_starttag(self, tag, attrs):
         a = {k.lower(): (v or "") for k, v in attrs}
         if tag in ("script", "style", "noscript"):
             self._skip += 1
-        if tag in ("title", "h1"):
+        if tag == "svg":
+            self._svg += 1
+        if self._svg and tag == "title":
+            # SVG logolarin <title> etiketi sayfa basligi degil, logo etiketidir
+            self._svg_title = ""
+        elif tag in ("title", "h1") and tag not in self._seen and not self._svg:
+            # Yalnizca belgenin ilk <title> ve ilk <h1> etiketi kimlik sayilir
             self._in = tag
         if tag == "meta" and a.get("property", a.get("name", "")).lower() in ("og:site_name", "og:title", "application-name"):
             self.identity.append(a.get("content", ""))
@@ -88,10 +97,19 @@ class _PageParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag in ("script", "style", "noscript") and self._skip:
             self._skip -= 1
-        if tag == self._in:
+        if tag == "title" and self._svg_title is not None:
+            self.logos.append(self._svg_title)
+            self._svg_title = None
+        elif tag == self._in:
+            self._seen.add(tag)
             self._in = None
+        if tag == "svg" and self._svg:
+            self._svg -= 1
 
     def handle_data(self, data):
+        if self._svg_title is not None:
+            self._svg_title += data
+            return
         if self._in == "title":
             self.title += data
         if self._in in ("title", "h1"):

@@ -223,3 +223,45 @@ def test_single_brand_logo_with_card_form():
     p["logos"] = ["yurtici kargo logo", "yurticikargo png"]
     score, level, ctx, _ = analyze("guvenli-odeme-tr.com", age=2, page=p)
     assert ctx["target_brand"] == "Yurtiçi Kargo" and score >= 85
+
+
+def test_svg_logo_titles_are_not_page_title():
+    """GitHub ana sayfasi musteri logolarini <svg><title>Vodafone</title> ile gosterir;
+    bunlar sayfa basligi sayilmamali."""
+    from backend.core.page_probe import _PageParser
+    html = ("<html><head><title>GitHub · Change is constant</title></head><body>"
+            "<h1>Build and ship software</h1><svg><title>Vodafone</title></svg>"
+            + "".join(f"<svg><title>{n}</title></svg>" for n in
+                      ("Ford", "Duolingo", "Shopify", "Mercedes-Benz", "InfoSys", "Philips", "American Airlines", "EY"))
+            + "<input type='password'></body></html>")
+    parser = _PageParser()
+    parser.feed(html)
+    assert parser.title == "GitHub · Change is constant"
+    assert "Vodafone" not in " ".join(parser.identity)
+    p = page(parser.title, ["Şifre"], host="github.com")
+    p["identity"], p["logos"] = parser.identity, parser.logos
+    score, *_ = analyze("github.com", age=6900, page=p)
+    assert score < 25
+
+
+def _analyze_vt(raw, age, pos, total=93):
+    p = parse_url_components(raw)
+    url = normalized_url(p, p["scheme"] or "https")
+    signals, mitigations, _ = collect_signals(
+        {**p, "url": url},
+        {"tls": None, "age_days": age, "resolved": True, "page": None, "vt_positives": pos, "vt_total": total},
+    )
+    return score_signals(signals, mitigations)[0]
+
+
+def test_few_vt_hits_on_official_domain_stay_low():
+    """google.com VirusTotal'da 2/93 gorunebilir; resmi ve koklu alan adi bunu dengelemeli."""
+    assert _analyze_vt("google.com", 10000, 2) < 25
+
+
+def test_many_vt_hits_are_critical_even_on_old_domain():
+    assert _analyze_vt("old-but-hacked-site.com", 5000, 7) >= 85
+
+
+def test_few_vt_hits_plus_impersonation_is_critical():
+    assert _analyze_vt("garanti-bonus-giris.com", 3, 2) >= 85
