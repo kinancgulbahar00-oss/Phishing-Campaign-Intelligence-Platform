@@ -6,7 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from backend.config import settings
-from backend.models.database import init_db
+from backend.models.database import init_db, SessionLocal
+from backend.core.default_whitelist import seed_default_whitelist
 from backend.api.routes_analyze import router as analyze_router
 from backend.api.routes_ioc import router as ioc_router
 from backend.api.routes_campaign import router as campaign_router
@@ -20,6 +21,13 @@ async def lifespan(app: FastAPI):
         init_db()
     except Exception as e:
         print(f"[Warning] Database initialization error: {e}")
+          db = SessionLocal()
+    try:
+        seed_default_whitelist(db)
+    except Exception as e:
+        print(f"[Warning] Default whitelist seeding error: {e}")
+    finally:
+        db.close()
     yield
 
 app = FastAPI(
