@@ -2,45 +2,172 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    color-scheme: dark;
-    --grid-line: rgba(255, 255, 255, 0.022);
-  }
+/* Tema tokenlari: RGB kanallari, Tailwind opaklik ekleriyle birlikte calisir */
+:root,
+:root[data-theme='light'] {
+    color-scheme: light;
+    --canvas: 238 239 236;
+    --sheet: 255 255 255;
+    --sunken: 246 246 243;
+    --line: 218 219 214;
+    --line-strong: 185 187 180;
+    --ink: 21 23 28;
+    --ink-2: 67 71 79;
+    --ink-3: 98 102 110;
+    --ink-inverse: 233 234 236;
+    --night: 18 20 24;
+    --night-2: 28 31 37;
+    --night-3: 42 46 54;
+    --night-text: 167 171 179;
+    --petrol-50: 231 240 241;
+    --petrol-100: 207 225 227;
+    --petrol-600: 20 96 112;
+    --petrol-700: 15 76 92;
+    --petrol-800: 11 58 71;
+    --on-accent: 255 255 255;
+    --risk-critical: 180 22 31;
+    --risk-high: 184 67 11;
+    --risk-medium: 143 91 7;
+    --risk-low: 44 110 71;
+    --risk-unknown: 91 97 107;
+    --shadow-sheet: 0 1px 2px rgba(21, 23, 28, 0.06), 0 8px 24px -12px rgba(21, 23, 28, 0.14);
+}
 
+:root[data-theme='dark'] {
+    color-scheme: dark;
+    --canvas: 14 16 19;
+    --sheet: 22 25 30;
+    --sunken: 28 32 38;
+    --line: 42 47 55;
+    --line-strong: 59 65 75;
+    --ink: 231 233 236;
+    --ink-2: 182 186 194;
+    --ink-3: 141 146 155;
+    --ink-inverse: 233 234 236;
+    --night: 8 9 11;
+    --night-2: 21 23 27;
+    --night-3: 35 38 44;
+    --night-text: 158 162 170;
+    --petrol-50: 16 39 44;
+    --petrol-100: 28 66 73;
+    --petrol-600: 77 175 192;
+    --petrol-700: 60 157 175;
+    --petrol-800: 88 182 199;
+    --on-accent: 7 20 23;
+    --risk-critical: 242 102 110;
+    --risk-high: 242 140 80;
+    --risk-medium: 226 174 69;
+    --risk-low: 85 191 130;
+    --risk-unknown: 154 160 169;
+    --shadow-sheet: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* JS calismadan once veya tercih 'sistem' iken isletim sistemi temasi */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --canvas: 14 16 19;
+    --sheet: 22 25 30;
+    --sunken: 28 32 38;
+    --line: 42 47 55;
+    --line-strong: 59 65 75;
+    --ink: 231 233 236;
+    --ink-2: 182 186 194;
+    --ink-3: 141 146 155;
+    --ink-inverse: 233 234 236;
+    --night: 8 9 11;
+    --night-2: 21 23 27;
+    --night-3: 35 38 44;
+    --night-text: 158 162 170;
+    --petrol-50: 16 39 44;
+    --petrol-100: 28 66 73;
+    --petrol-600: 77 175 192;
+    --petrol-700: 60 157 175;
+    --petrol-800: 88 182 199;
+    --on-accent: 7 20 23;
+    --risk-critical: 242 102 110;
+    --risk-high: 242 140 80;
+    --risk-medium: 226 174 69;
+    --risk-low: 85 191 130;
+    --risk-unknown: 154 160 169;
+    --shadow-sheet: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Brifing baskida her zaman acik temadadir */
+@media print {
+  :root,
+  :root[data-theme='dark'] {
+    color-scheme: light;
+    --canvas: 238 239 236;
+    --sheet: 255 255 255;
+    --sunken: 246 246 243;
+    --line: 218 219 214;
+    --line-strong: 185 187 180;
+    --ink: 21 23 28;
+    --ink-2: 67 71 79;
+    --ink-3: 98 102 110;
+    --ink-inverse: 233 234 236;
+    --night: 18 20 24;
+    --night-2: 28 31 37;
+    --night-3: 42 46 54;
+    --night-text: 167 171 179;
+    --petrol-50: 231 240 241;
+    --petrol-100: 207 225 227;
+    --petrol-600: 20 96 112;
+    --petrol-700: 15 76 92;
+    --petrol-800: 11 58 71;
+    --on-accent: 255 255 255;
+    --risk-critical: 180 22 31;
+    --risk-high: 184 67 11;
+    --risk-medium: 143 91 7;
+    --risk-low: 44 110 71;
+    --risk-unknown: 91 97 107;
+    --shadow-sheet: 0 1px 2px rgba(21, 23, 28, 0.06), 0 8px 24px -12px rgba(21, 23, 28, 0.14);
+  }
+}
+
+
+@layer base {
   html {
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-canvas text-ink font-sans antialiased;
-    font-size: 16px;
-    line-height: 1.6;
-    font-feature-settings: 'cv05' 1, 'ss01' 1;
-    background-image:
-      radial-gradient(1100px 520px at 50% -8%, rgba(201, 162, 39, 0.07), transparent 62%),
-      radial-gradient(900px 480px at 88% 4%, rgba(91, 141, 239, 0.06), transparent 60%),
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
-    background-attachment: fixed;
+    @apply bg-canvas font-sans text-base text-ink antialiased;
+    font-feature-settings: 'tnum' 0;
   }
 
   h1, h2, h3, h4 {
-    @apply font-sans text-ink;
-    letter-spacing: -0.015em;
+    @apply text-ink;
     text-wrap: balance;
   }
 
-  /* Klavye kullanicilari icin gorunur odak halkasi */
   :focus-visible {
-    outline: none;
-    @apply ring-2 ring-brand-400/70 ring-offset-2 ring-offset-canvas rounded-[6px];
+    outline: 2px solid rgb(var(--petrol-600));
+    outline-offset: 2px;
+    border-radius: 3px;
   }
 
   ::selection {
-    background: rgba(201, 162, 39, 0.28);
-    color: #fff;
+    background: rgb(var(--petrol-100));
+    color: rgb(var(--ink));
+  }
+
+  input,
+  textarea,
+  select {
+    caret-color: rgb(var(--petrol-700));
+  }
+
+  ::placeholder {
+    color: rgb(var(--ink-3));
+    opacity: 1;
+  }
+
+  a {
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
 
   ::-webkit-scrollbar {
@@ -48,31 +175,81 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0A101C;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #253453;
+    background: rgb(var(--line-strong));
     border-radius: 999px;
-    border: 2px solid #0A101C;
+    border: 3px solid rgb(var(--canvas));
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #33456B;
+    background: rgb(var(--ink-3));
   }
 }
 
 @layer components {
-  /* Tum kartlarin ortak kabugu: hairline cerceve + ust parlama */
-  .panel {
-    @apply relative rounded-panel border border-line bg-surface bg-panel-sheen shadow-panel;
+  /* Brifing sayfasi: beyaz kagit, kilcal kenar */
+  .sheet {
+    @apply rounded border border-line bg-sheet shadow-sheet;
   }
-  .panel-title {
-    @apply text-eyebrow font-semibold uppercase text-ink-3;
+
+  /* Belge icindeki bolum basliklari */
+  .doc-h {
+    @apply font-serif text-lg font-semibold tracking-[-0.005em] text-ink;
   }
-  .rule {
-    @apply h-px w-full bg-line;
+
+  /* Tablo ve form etiketleri: kucuk ama buyuk harf degil */
+  .label {
+    @apply text-xs font-medium text-ink-3;
   }
+
   .data {
-    @apply font-mono tabular-nums tracking-tight;
+    @apply font-mono tabular-nums;
+    font-feature-settings: 'zero' 1;
+  }
+
+  .btn {
+    @apply inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded px-3.5 text-sm font-semibold transition-colors duration-150 ease-out disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-petrol-700 text-on-accent hover:bg-petrol-800 active:bg-petrol-800 disabled:bg-petrol-700/35;
+  }
+  .btn-secondary {
+    @apply btn border border-line-strong bg-sheet text-ink hover:border-ink-3 hover:bg-sunken active:bg-line/60 disabled:text-ink-3 disabled:hover:bg-sheet;
+  }
+  .btn-quiet {
+    @apply btn text-ink-2 hover:bg-sunken hover:text-ink;
+  }
+
+  .field {
+    @apply h-9 w-full rounded border border-line-strong bg-sheet px-3 text-sm text-ink transition-colors duration-150 hover:border-ink-3 focus:border-petrol-600 focus:outline-none focus:ring-2 focus:ring-petrol-600/20 disabled:bg-sunken;
+  }
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  body {
+    background: #fff;
+    color: rgb(var(--ink));
+  }
+  .no-print {
+    display: none !important;
+  }
+  .sheet {
+    box-shadow: none;
+    border: 0;
+  }
+  .print-full {
+    grid-column: 1 / -1 !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  /* TLP bantlari baskida renklerini korumali */
+  .tlp-band {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 

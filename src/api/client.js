@@ -22,6 +22,19 @@ export async function analyzeUrl(urlToAnalyze) {
   return response.json();
 }
 
+export async function fetchBrands() {
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}/brands`);
+  } catch {
+    throw new Error('Katalog servisine ulaşılamadı.');
+  }
+  if (!response.ok) {
+    throw new Error(`Katalog getirilemedi (HTTP ${response.status}).`);
+  }
+  return response.json();
+}
+
 export async function fetchLists(listType) {
   const url = listType ? `${API_BASE_URL}/lists?list_type=${listType}` : `${API_BASE_URL}/lists`;
   const response = await fetch(url);

@@ -1,62 +1,66 @@
+const v = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      // Renkler CSS degiskenlerinden gelir (src/index.css): acik ve koyu tema ayni token adlarini kullanir.
       colors: {
-        canvas: '#060A12',
-        surface: {
-          DEFAULT: '#0A101C',
-          2: '#0F1726',
-          3: '#151F33',
-        },
-        line: {
-          DEFAULT: '#1B2740',
-          strong: '#253453',
-        },
-        ink: {
-          DEFAULT: '#E8EDF7',
-          2: '#9AA8C0',
-          3: '#6B7A94',
-        },
-        brand: {
-          50: '#FBF4DE',
-          200: '#E9D08A',
-          300: '#DCBC63',
-          400: '#C9A227',
-          500: '#B8912F',
-          600: '#8F6F1E',
-          900: '#3A2D0C',
-        },
+        canvas: v('canvas'),
+        sheet: v('sheet'),
+        sunken: v('sunken'),
+        line: { DEFAULT: v('line'), strong: v('line-strong') },
+        ink: { DEFAULT: v('ink'), 2: v('ink-2'), 3: v('ink-3'), inverse: v('ink-inverse') },
+        // Kenar cubugu ve TLP bantlari: ayni siyah ailesi
+        night: { DEFAULT: v('night'), 2: v('night-2'), 3: v('night-3'), text: v('night-text') },
+        // Tek marka / eylem rengi. Kirmizi ailesi onem derecesi ve tehlikeye ayrildi.
+        petrol: { 50: v('petrol-50'), 100: v('petrol-100'), 600: v('petrol-600'), 700: v('petrol-700'), 800: v('petrol-800') },
+        'on-accent': v('on-accent'),
         risk: {
-          critical: '#F04438',
-          high: '#FF7A45',
-          medium: '#FDB022',
-          low: '#12B76A',
-          info: '#5B8DEF',
+          critical: v('risk-critical'),
+          high: v('risk-high'),
+          medium: v('risk-medium'),
+          low: v('risk-low'),
+          unknown: v('risk-unknown'),
+        },
+        brass: '#D2B15C',
+        // FIRST TLP 2.0 resmi renkleri (her iki temada da siyah zemin uzerinde)
+        tlp: {
+          red: '#FF2B2B',
+          amber: '#FFC000',
+          green: '#33FF00',
+          clear: '#FFFFFF',
         },
       },
       fontFamily: {
-        sans: ['"IBM Plex Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        sans: ['"Public Sans Variable"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Source Serif 4 Variable"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono Variable"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       fontSize: {
-        eyebrow: ['0.6875rem', { lineHeight: '1rem', letterSpacing: '0.14em' }],
+        '2xs': ['0.6875rem', { lineHeight: '1rem' }],
+        xs: ['0.75rem', { lineHeight: '1.125rem' }],
+        sm: ['0.8125rem', { lineHeight: '1.25rem' }],
+        base: ['0.9375rem', { lineHeight: '1.5rem' }],
+        lg: ['1.0625rem', { lineHeight: '1.625rem' }],
+        xl: ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.375rem' }],
       },
       borderRadius: {
-        panel: '14px',
+        DEFAULT: '4px',
+        sm: '3px',
+        md: '5px',
       },
       boxShadow: {
-        panel: '0 1px 0 0 rgba(255,255,255,0.03) inset, 0 12px 32px -18px rgba(0,0,0,0.9)',
-        lift: '0 18px 40px -22px rgba(0,0,0,0.95)',
-        gold: '0 0 0 1px rgba(201,162,39,0.35), 0 10px 30px -12px rgba(201,162,39,0.35)',
+        sheet: 'var(--shadow-sheet)',
       },
-      backgroundImage: {
-        'hairline-t': 'linear-gradient(90deg, transparent, rgba(201,162,39,0.35), transparent)',
-        'panel-sheen': 'linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0) 42%)',
+      transitionTimingFunction: {
+        out: 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       keyframes: {
-        'fade-up': {
-          from: { opacity: '0', transform: 'translateY(8px)' },
+        rise: {
+          from: { opacity: '0', transform: 'translateY(6px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
         shimmer: {
@@ -64,7 +68,7 @@ export default {
         },
       },
       animation: {
-        'fade-up': 'fade-up 320ms cubic-bezier(0.22, 1, 0.36, 1) both',
+        rise: 'rise 220ms cubic-bezier(0.22, 1, 0.36, 1) both',
         shimmer: 'shimmer 1.6s infinite',
       },
     },

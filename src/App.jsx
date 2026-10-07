@@ -1,145 +1,101 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Clock3, FileDown, ShieldCheck } from 'lucide-react';
-import { SearchBar } from './components/SearchBar';
-import { ThreatScoreCard } from './components/ThreatScoreCard';
-import { IOCSummary } from './components/IOCSummary';
-import { ExplainabilityList } from './components/ExplainabilityList';
-import { EmptyState } from './components/EmptyState';
-import { SkeletonReport } from './components/SkeletonReport';
-import { ListManagementModal } from './components/ListManagementModal';
-import { Logo } from './components/ui/Logo';
+import { Menu } from 'lucide-react';
+import { Sidebar } from './components/layout/Sidebar';
+import { Wordmark } from './components/ui/Logo';
+import { AnalysisPage } from './pages/AnalysisPage';
+import { RulesPage } from './pages/RulesPage';
+import { CatalogPage } from './pages/CatalogPage';
 import { analyzeUrl } from './api/client';
+import { useHashRoute, ROUTES } from './lib/useHashRoute';
+import { verdictOf, referenceOf, formatStamp } from './lib/verdict';
+import { loadRecent, pushRecent, clearRecent, loadTlp, saveTlp } from './lib/storage';
+import { useTheme } from './lib/theme';
+
+const EMPTY = { data: null, verdict: null, query: null, reference: '', stamp: '', loading: false, error: '' };
 
 export default function App() {
-  const [data, setData] = useState(null);
-  const [query, setQuery] = useState('');
-  const [stamp, setStamp] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [isListModalOpen, setIsListModalOpen] = useState(false);
+  const route = useHashRoute();
+  const [analysis, setAnalysis] = useState(EMPTY);
+  const [recent, setRecent] = useState(loadRecent);
+  const [tlp, setTlp] = useState(loadTlp);
+  const [navOpen, setNavOpen] = useState(false);
+  const [theme, setTheme] = useTheme();
 
-  const handleSearch = async (url) => {
-    setLoading(true);
-    setError('');
-    setQuery(url);
+  const runAnalysis = async (query) => {
+    if (route !== 'analysis') window.location.hash = ROUTES.analysis;
+    setAnalysis((s) => ({ ...s, query, loading: true, error: '' }));
     try {
-      const result = await analyzeUrl(url);
-      setData(result);
-      setStamp(new Date().toLocaleString('tr-TR'));
+      const data = await analyzeUrl(query);
+      const now = new Date();
+      const verdict = verdictOf(data);
+      setAnalysis({
+        data,
+        verdict,
+        query,
+        reference: referenceOf(data, now),
+        stamp: formatStamp(now),
+        loading: false,
+        error: '',
+      });
+      setRecent(pushRecent({ query, score: data.risk_score, level: String(data.risk_level).toLowerCase() }));
     } catch (err) {
-      setData(null);
-      setError(err.message || 'Bağlantı hatası oluştu.');
-    } finally {
-      setLoading(false);
+      setAnalysis({ ...EMPTY, query, error: err.message || 'Analiz tamamlanamadı.' });
     }
   };
 
+  const changeTlp = (value) => {
+    setTlp(value);
+    saveTlp(value);
+  };
+
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="min-h-screen">
       <a
-        href="#report"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-400 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-canvas"
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-petrol-700 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-on-accent"
       >
         İçeriğe geç
       </a>
 
-      <header className="sticky top-0 z-30 border-b border-line bg-canvas/85 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-5 sm:px-8">
-          <div className="flex items-center gap-3">
-            <Logo />
-            <div className="leading-tight">
-              <p className="text-eyebrow font-semibold uppercase text-brand-300">Threat Intelligence</p>
-              <h1 className="text-[15px] font-semibold tracking-tight text-ink">CTI Phishing Platform</h1>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setIsListModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface-2 px-3 py-1.5 text-xs font-semibold text-ink hover:border-brand-400 hover:text-brand-300 transition-colors"
-            >
-              <ShieldCheck className="h-4 w-4 text-emerald-400" />
-              <span>Liste Yönetimi</span>
-            </button>
-            <span className="data rounded-full border border-line bg-surface px-3 py-1.5 text-[11px] text-ink-3">
-              v1.0
-            </span>
-          </div>
-        </div>
-        <div aria-hidden="true" className="h-px w-full bg-hairline-t" />
-      </header>
-
-      <main id="report" className="mx-auto w-full max-w-[1240px] flex-1 px-5 py-8 sm:px-8 sm:py-10">
-        <section className="mb-8">
-          <SearchBar onSearch={handleSearch} loading={loading} />
-
-          {error && (
-            <div
-              role="alert"
-              className="mt-4 flex items-start gap-3 rounded-panel border border-risk-critical/35 bg-risk-critical/10 px-4 py-3 text-sm text-risk-critical"
-            >
-              <AlertTriangle aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>{error}</span>
-            </div>
-          )}
-        </section>
-
-        <div aria-live="polite" aria-busy={loading}>
-          {loading && <SkeletonReport />}
-
-          {!loading && !data && <EmptyState />}
-
-          {!loading && data && (
-            <div className="animate-fade-up space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-panel border border-line bg-surface px-5 py-3">
-                <div className="min-w-0">
-                  <p className="text-eyebrow font-semibold uppercase text-ink-3">Analiz edilen gösterge</p>
-                  <p className="data mt-1 truncate text-sm text-ink" title={query}>
-                    {query}
-                  </p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs text-ink-3">
-                    <Clock3 aria-hidden="true" className="h-3.5 w-3.5" />
-                    {stamp}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => window.print()}
-                    className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-line bg-surface-2 px-3.5 py-2 text-xs font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink"
-                  >
-                    <FileDown aria-hidden="true" className="h-3.5 w-3.5" />
-                    Raporu dışa aktar
-                  </button>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-                <div className="lg:col-span-1">
-                  <ThreatScoreCard score={data.risk_score} level={data.risk_level} />
-                </div>
-                <div className="lg:col-span-2">
-                  <ExplainabilityList items={data.reasons} />
-                </div>
-              </div>
-
-              <IOCSummary ioc={data.ioc_details} />
-            </div>
-          )}
-        </div>
-      </main>
-
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-6 text-xs text-ink-3 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p>CTI Phishing Platform — açık kaynak istihbarat sağlayıcılarıyla beslenir.</p>
-          <p className="data">Veri kaynakları: WHOIS · AbuseIPDB · VirusTotal</p>
-        </div>
-      </footer>
-
-      <ListManagementModal
-        isOpen={isListModalOpen}
-        onClose={() => setIsListModalOpen(false)}
+      <Sidebar
+        route={route}
+        recent={recent}
+        onPickRecent={runAnalysis}
+        onClearRecent={() => setRecent(clearRecent())}
+        open={navOpen}
+        onClose={() => setNavOpen(false)}
+        theme={theme}
+        onThemeChange={setTheme}
       />
+
+      <div className="no-print sticky top-0 z-20 flex h-14 items-center justify-between bg-night px-4 lg:hidden">
+        <Wordmark />
+        <button
+          type="button"
+          onClick={() => setNavOpen(true)}
+          className="rounded p-2 text-night-text hover:bg-night-2 hover:text-white"
+          aria-label="Menüyü aç"
+          aria-expanded={navOpen}
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      </div>
+
+      <main id="main" className="lg:pl-[248px]">
+        {route === 'rules' ? (
+          <RulesPage />
+        ) : route === 'catalog' ? (
+          <CatalogPage />
+        ) : (
+          <AnalysisPage
+            state={analysis}
+            onSearch={runAnalysis}
+            onRetry={() => analysis.query && runAnalysis(analysis.query)}
+            tlp={tlp}
+            onTlpChange={changeTlp}
+          />
+        )}
+      </main>
     </div>
   );
 }
