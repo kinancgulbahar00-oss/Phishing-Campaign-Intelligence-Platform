@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from backend.models.database import get_db
 from backend.models.list_model import ListModel
 from backend.schemas.list_schema import ListCreateRequest, ListItemResponse
+from backend.api.routes_auth import require_admin
 
 router = APIRouter(prefix="/lists", tags=["Whitelist & Blacklist"])
 
@@ -20,9 +21,13 @@ def get_list_entries(
         query = query.filter(ListModel.list_type == list_type)
     return query.order_by(ListModel.created_at.desc()).all()
 
-@router.post("", response_model=ListItemResponse, status_code=status.HTTP_201_CREATED, summary="Yeni Whitelist veya Blacklist kuralı ekler")
+@router.post("", response_model=ListItemResponse, status_code=status.HTTP_201_CREATED, summary="Yeni Whitelist veya Blacklist kuralı ekler (Yalnızca Admin)")
 @router.post("/", response_model=ListItemResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
-def create_list_entry(request: ListCreateRequest, db: Session = Depends(get_db)):
+def create_list_entry(
+    request: ListCreateRequest,
+    db: Session = Depends(get_db),
+    _admin: bool = Depends(require_admin)
+):
     pattern_clean = request.pattern.strip().lower()
     if not pattern_clean:
         raise HTTPException(status_code=400, detail="Pattern boş olamaz.")
@@ -46,8 +51,12 @@ def create_list_entry(request: ListCreateRequest, db: Session = Depends(get_db))
     db.refresh(new_item)
     return new_item
 
-@router.delete("/{item_id}", status_code=status.HTTP_204_NO_CONTENT, summary="Whitelist veya Blacklist kuralını siler")
-def delete_list_entry(item_id: int, db: Session = Depends(get_db)):
+@router.delete("/{item_id}", status_code=status.HTTP_204_NO_CONTENT, summary="Whitelist veya Blacklist kuralını siler (Yalnızca Admin)")
+def delete_list_entry(
+    item_id: int,
+    db: Session = Depends(get_db),
+    _admin: bool = Depends(require_admin)
+):
     item = db.query(ListModel).filter(ListModel.id == item_id).first()
     if not item:
         raise HTTPException(status_code=404, detail="Silinecek kural bulunamadı.")

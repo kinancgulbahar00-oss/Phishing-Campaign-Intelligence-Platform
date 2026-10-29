@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Sidebar } from './components/layout/Sidebar';
 import { Wordmark } from './components/ui/Logo';
 import { AnalysisPage } from './pages/AnalysisPage';
 import { RulesPage } from './pages/RulesPage';
 import { CatalogPage } from './pages/CatalogPage';
-import { analyzeUrl } from './api/client';
+import { AdminPage } from './pages/AdminPage';
+import { analyzeUrl, adminVerify } from './api/client';
 import { useHashRoute, ROUTES } from './lib/useHashRoute';
 import { verdictOf, referenceOf, formatStamp } from './lib/verdict';
 import { loadRecent, pushRecent, clearRecent, loadTlp, saveTlp } from './lib/storage';
@@ -20,6 +21,13 @@ export default function App() {
   const [tlp, setTlp] = useState(loadTlp);
   const [navOpen, setNavOpen] = useState(false);
   const [theme, setTheme] = useTheme();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    adminVerify()
+      .then((res) => setIsAdmin(res.valid === true))
+      .catch(() => setIsAdmin(false));
+  }, []);
 
   const runAnalysis = async (query) => {
     if (route !== 'analysis') window.location.hash = ROUTES.analysis;
@@ -66,6 +74,7 @@ export default function App() {
         onClose={() => setNavOpen(false)}
         theme={theme}
         onThemeChange={setTheme}
+        isAdmin={isAdmin}
       />
 
       <div className="no-print sticky top-0 z-20 flex h-14 items-center justify-between bg-night px-4 lg:hidden">
@@ -82,8 +91,10 @@ export default function App() {
       </div>
 
       <main id="main" className="lg:pl-[248px]">
-        {route === 'rules' ? (
-          <RulesPage />
+        {route === 'admin' ? (
+          <AdminPage onAdminStatusChange={setIsAdmin} />
+        ) : route === 'rules' ? (
+          <RulesPage isAdmin={isAdmin} />
         ) : route === 'catalog' ? (
           <CatalogPage />
         ) : (

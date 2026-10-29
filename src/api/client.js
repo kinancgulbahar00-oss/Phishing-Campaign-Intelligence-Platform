@@ -35,6 +35,70 @@ export async function fetchBrands() {
   return response.json();
 }
 
+export function getAdminToken() {
+  return localStorage.getItem('cti_admin_token') || sessionStorage.getItem('cti_admin_token') || '';
+}
+
+export function setAdminToken(token, remember = true) {
+  if (remember) {
+    localStorage.setItem('cti_admin_token', token);
+  } else {
+    sessionStorage.setItem('cti_admin_token', token);
+  }
+}
+
+export function clearAdminToken() {
+  localStorage.removeItem('cti_admin_token');
+  sessionStorage.removeItem('cti_admin_token');
+}
+
+export async function adminLogin(password, remember = true) {
+  const response = await fetch(`${API_BASE_URL}/admin/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.detail || 'Giriş başarısız. Parolanızı kontrol edin.');
+  }
+
+  const data = await response.json();
+  if (data.token) {
+    setAdminToken(data.token, remember);
+  }
+  return data;
+}
+
+export async function adminVerify() {
+  const token = getAdminToken();
+  if (!token) return { valid: false };
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/verify`, {
+      headers: { 'X-Admin-Token': token },
+    });
+    if (!response.ok) {
+      clearAdminToken();
+      return { valid: false };
+    }
+    return await response.json();
+  } catch {
+    return { valid: false };
+  }
+}
+
+export async function fetchAdminStats() {
+  const token = getAdminToken();
+  const headers = token ? { 'X-Admin-Token': token } : {};
+  const response = await fetch(`${API_BASE_URL}/admin/stats`, { headers });
+  if (!response.ok) {
+    throw new Error('İstatistikler alınamadı.');
+  }
+  return response.json();
+}
+
 export async function fetchLists(listType) {
   const url = listType ? `${API_BASE_URL}/lists?list_type=${listType}` : `${API_BASE_URL}/lists`;
   const response = await fetch(url);
@@ -45,11 +109,17 @@ export async function fetchLists(listType) {
 }
 
 export async function addListItem(itemData) {
+  const token = getAdminToken();
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+  if (token) {
+    headers['X-Admin-Token'] = token;
+  }
+
   const response = await fetch(`${API_BASE_URL}/lists`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
     body: JSON.stringify(itemData),
   });
 
@@ -62,12 +132,20 @@ export async function addListItem(itemData) {
 }
 
 export async function deleteListItem(itemId) {
+  const token = getAdminToken();
+  const headers = {};
+  if (token) {
+    headers['X-Admin-Token'] = token;
+  }
+
   const response = await fetch(`${API_BASE_URL}/lists/${itemId}`, {
     method: 'DELETE',
+    headers,
   });
 
   if (!response.ok) {
-    throw new Error(`Kural silinemedi (HTTP ${response.status}).`);
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.detail || `Kural silinemedi (HTTP ${response.status}).`);
   }
 
   return true;

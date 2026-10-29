@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     # Sayfa icerigi analizi: supheli sayfa JavaScript calistirilmadan indirilir
     PAGE_FETCH_ENABLED: bool = True
     
+    # Yonetici (Admin) Yetkilendirme
+    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "admin123")
+    ADMIN_SESSION_TOKEN: str = os.getenv("ADMIN_SESSION_TOKEN", "cti-admin-secure-token-2026")
+    
     CORS_ORIGINS: list[str] = [
         "http://localhost:5173",
         "http://localhost:3000",

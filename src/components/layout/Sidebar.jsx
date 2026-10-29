@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileSearch, ListFilter, Building2, History, X, Sun, Moon, Monitor } from 'lucide-react';
+import { FileSearch, ListFilter, Building2, ShieldAlert, History, X, Sun, Moon, Monitor } from 'lucide-react';
 import { Wordmark } from '../ui/Logo';
 import { ROUTES } from '../../lib/useHashRoute';
 import { bandOf, SEVERITY } from '../../lib/verdict';
@@ -12,11 +12,12 @@ const THEMES = [
 
 const NAV = [
   { id: 'analysis', href: ROUTES.analysis, label: 'Gösterge analizi', icon: FileSearch },
-  { id: 'rules', href: ROUTES.rules, label: 'Analist kuralları', icon: ListFilter },
+  { id: 'rules', href: ROUTES.rules, label: 'İzin & Engel listesi', icon: ListFilter },
   { id: 'catalog', href: ROUTES.catalog, label: 'Kurum kataloğu', icon: Building2 },
+  { id: 'admin', href: ROUTES.admin, label: 'Yönetici paneli', icon: ShieldAlert },
 ];
 
-export function Sidebar({ route, recent, onPickRecent, onClearRecent, open, onClose, theme, onThemeChange }) {
+export function Sidebar({ route, recent, onPickRecent, onClearRecent, open, onClose, theme, onThemeChange, isAdmin }) {
   return (
     <>
       <div
@@ -54,8 +55,19 @@ export function Sidebar({ route, recent, onPickRecent, onClearRecent, open, onCl
                       active ? 'bg-night-3 text-white' : 'text-night-text hover:bg-night-2 hover:text-white'
                     }`}
                   >
-                    <Icon aria-hidden="true" className={`h-4 w-4 ${active ? 'text-brass' : ''}`} />
-                    {label}
+                    <Icon aria-hidden="true" className={`h-4 w-4 shrink-0 ${active ? 'text-brass' : ''}`} />
+                    <span className="flex-1 truncate">{label}</span>
+                    {id === 'admin' && (
+                      <span
+                        className={`inline-flex items-center rounded px-1.5 py-0.5 text-3xs font-semibold ${
+                          isAdmin
+                            ? 'bg-risk-low/20 text-emerald-400'
+                            : 'bg-night-2 text-night-text'
+                        }`}
+                      >
+                        {isAdmin ? 'Aktif' : 'Korumalı'}
+                      </span>
+                    )}
                   </a>
                 </li>
               );
@@ -130,7 +142,6 @@ export function Sidebar({ route, recent, onPickRecent, onClearRecent, open, onCl
               );
             })}
           </div>
-          <p className="mt-3 text-2xs leading-relaxed text-night-text">Kaynaklar: WHOIS · DNS · AbuseIPDB · VirusTotal</p>
         </div>
       </aside>
     </>

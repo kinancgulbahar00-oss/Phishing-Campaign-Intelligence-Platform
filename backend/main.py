@@ -12,6 +12,7 @@ from backend.api.routes_ioc import router as ioc_router
 from backend.api.routes_campaign import router as campaign_router
 from backend.api.routes_list import router as list_router
 from backend.api.routes_brands import router as brands_router
+from backend.api.routes_auth import router as auth_router
 
 FRONTEND_DIST = Path(__file__).resolve().parent.parent / "dist"
 
@@ -45,6 +46,7 @@ app.include_router(ioc_router)
 app.include_router(campaign_router)
 app.include_router(list_router)
 app.include_router(brands_router)
+app.include_router(auth_router)
 
 @app.get("/health", tags=["Health"], summary="Servis sağlık kontrolü")
 def health_check():

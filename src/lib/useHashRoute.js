@@ -4,12 +4,14 @@ export const ROUTES = {
   analysis: '#/analiz',
   rules: '#/kurallar',
   catalog: '#/katalog',
+  admin: '#/admin',
 };
 
 const current = () => {
   const hash = window.location.hash;
   if (hash === ROUTES.rules) return 'rules';
   if (hash === ROUTES.catalog) return 'catalog';
+  if (hash === ROUTES.admin) return 'admin';
   return 'analysis';
 };
 
