@@ -459,12 +459,12 @@ export function AdminPage({ onAdminStatusChange }) {
 
         <div className="sheet p-4 border border-line">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-ink-3">Taranan Bağlantılar (IOC)</span>
+            <span className="text-xs font-semibold text-ink-3">Vaka Sayısı</span>
             <Globe2 className="h-4 w-4 text-petrol-700" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-bold text-ink">{stats?.total_iocs ?? '–'}</span>
-            <span className="text-3xs text-ink-3">toplam analiz</span>
+            <span className="text-3xs text-ink-3">toplam vaka</span>
           </div>
         </div>
 
