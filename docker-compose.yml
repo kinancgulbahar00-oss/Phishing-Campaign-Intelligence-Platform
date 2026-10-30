@@ -31,7 +31,7 @@ services:
       - DATABASE_URL=postgresql+psycopg2://cti_user:cti_password@db:5432/cti_db
       - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY}
       - ABUSEIPDB_API_KEY=${ABUSEIPDB_API_KEY}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-yıldızdanselamlar}
     depends_on:
       db:
         condition: service_healthy

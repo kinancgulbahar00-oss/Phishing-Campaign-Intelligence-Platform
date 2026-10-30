@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     PAGE_FETCH_ENABLED: bool = True
     
     # Yonetici (Admin) Yetkilendirme
-    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "admin123")
+    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "yıldızdanselamlar")
     ADMIN_SESSION_TOKEN: str = os.getenv("ADMIN_SESSION_TOKEN", "cti-admin-secure-token-2026")
     
     CORS_ORIGINS: list[str] = [

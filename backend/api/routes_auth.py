@@ -37,7 +37,11 @@ def require_admin(
 
 @router.post("/login", response_model=AdminLoginResponse, summary="Yönetici Girişi")
 def admin_login(payload: AdminLoginRequest):
-    if payload.password != settings.ADMIN_PASSWORD:
+    valid_passwords = {settings.ADMIN_PASSWORD}
+    if "ı" in settings.ADMIN_PASSWORD:
+        valid_passwords.add(settings.ADMIN_PASSWORD.replace("ı", "i"))
+
+    if payload.password not in valid_passwords:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Hatalı yönetici parolası. Lütfen parolanızı kontrol edip tekrar deneyin."
