@@ -1,4 +1,4 @@
-# 🛡️ Phishing Campaign Intelligence Platform (CTI Phishing Platform)
+# Mihenk: Phishing Campaign Intelligence Platform
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white)
@@ -6,69 +6,97 @@
 ![Vite](https://img.shields.io/badge/Vite-4.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green.style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-**Phishing Campaign Intelligence Platform**, şüpheli URL ve alan adlarını (IOC - Indicator of Compromise) gerçek zamanlı olarak analiz eden, tehdit skorlaması yapan ve gerekçelendirilmiş siber tehdit istihbaratı (CTI) raporları sunan modern bir güvenlik platformudur.
-
----
-
-## 📸 Ekran Görüntüsü
-
-![CTI Phishing Platform Dashboard](docs/dashboard.png)
-
-> *Görsel: Şüpheli bir alan adının (`https://kucoins-signin.com/`) analizi sonrasında elde edilen Tehdit Skoru (82/100 - CRITICAL), Marka Taklidi ve Domain Yaşı gerekçeleri ile VirusTotal & AbuseIPDB entegrasyon detayları.*
+**Mihenk**, şüpheli URL ve alan adlarını (IOC - Indicator of Compromise) gerçek zamanlı olarak analiz eden, tehdit skorlaması yapan ve gerekçelendirilmiş siber tehdit istihbaratı (CTI) brifingleri üreten bir güvenlik platformudur.
 
 ---
 
-## 🔥 Öne Çıkan Özellikler
+## Ekran Görüntüleri
 
-- **🎯 Açıklanabilir Tehdit Skoru (0 - 100):** Sezgisel kurallar, WHOIS verileri, TLD riskleri ve şüpheli anahtar kelimeler ile ağırlıklı risk hesaplaması (`CRITICAL`, `HIGH`, `MEDIUM`, `LOW`).
-- **🕵️ Marka Taklidi & Typosquatting Tespiti:** Kripto borsa, bankacılık ve popüler servislerin marka isimlerini taklit eden oltalama (phishing) adreslerinin tespiti.
-- **🛡️ MITRE ATT&CK® Haritalaması:** Tespit edilen tehditlerin ilgili taktik ve tekniklerle ilişkilendirilmesi (Örn: `T1566.002 - Spearphishing Link`, `T1056.003 - Credential Access`).
-- **🌐 Dahili & Harici CTI Servis Entegrasyonları:**
-  - **VirusTotal API:** Zayıflık ve zararlı tespit analizleri.
+### Gösterge analizi: tehdit brifingi
+
+![Tehdit brifingi](docs/screenshots/02-analysis-report.png)
+
+> `https://kucoins-signin.com/` adresinin analizi: 99/100 skorla **Zararlı** kararı, KuCoin marka taklidi, VirusTotal tespiti, genç alan adı gibi bulgular, kaynak bazında kanıt tablosu ve TLP dağıtım işareti.
+
+### Gösterge analizi: başlangıç ekranı
+
+![Gösterge analizi](docs/screenshots/01-analysis-empty.png)
+
+### İzin & Engel listesi
+
+![İzin ve Engel listesi](docs/screenshots/03-rules.png)
+
+> Listeler herkes tarafından görüntülenebilir; kural ekleme ve silme yalnızca yönetici girişiyle yapılabilir.
+
+### Kurum kataloğu
+
+![Kurum kataloğu](docs/screenshots/04-catalog.png)
+
+### Yönetici paneli
+
+| Giriş | Yönetim konsolu |
+| :---: | :---: |
+| ![Yönetici girişi](docs/screenshots/05-admin-login.png) | ![Yönetici konsolu](docs/screenshots/06-admin-console.png) |
+
+---
+
+## Öne Çıkan Özellikler
+
+- **Açıklanabilir Tehdit Skoru (0 - 100):** WHOIS verileri, alan adı yaşı, TLD riskleri, şüpheli anahtar kelimeler ve itibar sorgularıyla hesaplanan skor. Her bulgu, skora kaç puan kattığıyla birlikte gösterilir. Kararlar: `Zararlı`, `Şüpheli`, `Dikkat`, `Düşük risk`.
+- **Marka Taklidi ve Typosquatting Tespiti:** Banka, kripto borsa, e-ticaret, kamu kurumu gibi 218 kurumu içeren katalog üzerinden, kurum adını veya yazım benzerlerini taşıyan ama resmi adreste olmayan sayfaların tespiti.
+- **İzin & Engel Listeleri:** Engel listesindeki bir kalıpla eşleşen gösterge harici sorgu beklenmeden Kritik (100) olarak değerlendirilir; izin listesindeki kalıplar harici sorgular atlanarak İzinli işaretlenir.
+- **Yönetici Paneli:** Liste kurallarının eklenmesi ve silinmesi yalnızca yönetici girişiyle yapılabilir. Panel ayrıca kural ve analiz sayılarını gösterir.
+- **Harici CTI Servis Entegrasyonları:**
+  - **VirusTotal API:** Zararlı tespit analizleri.
   - **AbuseIPDB API:** IP adresi itibarı ve kötüye kullanım raporları.
-  - **WHOIS & IP Coğrafi Konumu:** Kayıt tarihi, alan adı yaşı ve barındırma sunucusu tespiti.
-- **⚡ Eşzamanlı (Parallel) Analiz Hattı:** `ThreadPoolExecutor` kullanılarak WHOIS, DNS çözümleme ve itibar sorgularının milisaniyeler içinde paralel yürütülmesi.
-- **📊 Kampanya Yönetimi & Raporlama:** İncelenen IOC'lerin kaydedilmesi, geçmiş analizlerin sorgulanması ve JSON formatında dışa aktarılması.
+  - **WHOIS ve DNS:** Kayıt tarihi, alan adı yaşı ve çözümlenen IP.
+  - **Sayfa içeriği:** Şüpheli sayfa JavaScript çalıştırılmadan indirilip incelenir (`PAGE_FETCH_ENABLED`).
+- **Eşzamanlı Analiz Hattı:** `ThreadPoolExecutor` ile WHOIS, DNS çözümleme ve itibar sorguları paralel yürütülür.
+- **Paylaşılabilir Brifing:** TLP dağıtım işareti (CLEAR / GREEN / AMBER / RED), yazdırma ve PDF kaydetme, bilet için özet kopyalama.
+- **Açık / Koyu / Sistem teması** ve tarayıcıda saklanan son analizler listesi.
 
 ---
 
-## 🛠️ Teknoloji Yığını
+## Teknoloji Yığını
 
 | Katman | Teknoloji / Kütüphane | Açıklama |
 | :--- | :--- | :--- |
-| **Backend** | Python 3.11, FastAPI, Uvicorn | Yüksek performanslı asenkron REST API servisi |
-| **Frontend** | React 18, Vite, TailwindCSS | Modern dark-mode siber güvenlik gösterge paneli |
+| **Backend** | Python 3.11, FastAPI, Uvicorn | Yüksek performanslı REST API servisi |
+| **Frontend** | React 18, Vite, TailwindCSS | Açık ve koyu temalı analist arayüzü |
 | **Veritabanı** | SQLite / PostgreSQL | Geliştirmede hafif SQLite, Docker üzerinde PostgreSQL |
-| **ORM & Doğrulama** | SQLAlchemy 2.0, Pydantic v2 | Veritabanı modeli yönetimi ve şema doğrulamaları |
-| **Kapsayıcı** | Docker & Docker Compose | Multi-stage build ile optimize edilmiş konteynerizasyon |
+| **ORM ve Doğrulama** | SQLAlchemy 2.0, Pydantic v2 | Veritabanı modeli yönetimi ve şema doğrulamaları |
+| **Kapsayıcı** | Docker ve Docker Compose | Multi-stage build ile optimize edilmiş konteynerizasyon |
 
 ---
 
-## 🏗️ Sistem Mimarisi
+## Sistem Mimarisi
 
 ```mermaid
 graph TD
-    User([👤 Analist / Kullanıcı]) <-->|HTTP / React UI| Frontend[🌐 React + Vite Dashboard]
-    Frontend <-->|REST API / JSON| Backend[⚡ FastAPI Backend]
-    
-    subgraph Core Pipeline [Analiz Motoru & Parallel Worker]
-        Backend --> Pipeline[analyze_url_pipeline]
-        Pipeline --> Task1[WHOIS & Domain Age]
-        Pipeline --> Task2[DNS IP Resolution]
-        Pipeline --> Task3[Typosquatting Engine]
-        Pipeline --> Task4[CTI Reputation Checks]
+    User([Analist / Kullanıcı]) <-->|HTTP / React UI| Frontend[React + Vite Arayüzü]
+    Admin([Yönetici]) <-->|Parola ile giriş| Frontend
+    Frontend <-->|REST API / JSON| Backend[FastAPI Backend]
+
+    subgraph Core Pipeline [Analiz Motoru ve Paralel İşçiler]
+        Backend --> Lists[İzin / Engel Listesi Kontrolü]
+        Lists --> Pipeline[analyze_url_pipeline]
+        Pipeline --> Task1[WHOIS ve Alan Adı Yaşı]
+        Pipeline --> Task2[DNS IP Çözümleme]
+        Pipeline --> Task3[Marka Taklidi ve Typosquatting]
+        Pipeline --> Task4[CTI İtibar Sorguları]
+        Pipeline --> Task5[Sayfa İçeriği]
     end
-    
-    Task4 <-->|API| VT[🛡️ VirusTotal API]
-    Task4 <-->|API| Abuse[IPDB API]
-    Backend <-->|SQLAlchemy| DB[(🗄️ SQLite / PostgreSQL)]
+
+    Task4 <-->|API| VT[VirusTotal API]
+    Task4 <-->|API| Abuse[AbuseIPDB API]
+    Backend <-->|SQLAlchemy| DB[(SQLite / PostgreSQL)]
 ```
 
 ---
 
-## 🚀 Kurulum ve Çalıştırma
+## Kurulum ve Çalıştırma
 
 Projeyi çalıştırmak için **iki farklı yöntem** bulunmaktadır.
 
@@ -92,14 +120,14 @@ Bilgisayarınızda [Docker Desktop](https://www.docker.com/products/docker-deskt
    ```
 
 Servisler hazır olduğunda:
-- **Frontend Dashboard:** [http://localhost:5173](http://localhost:5173)
-- **Backend & Swagger API Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Frontend:** [http://localhost:5173](http://localhost:5173)
+- **Backend ve Swagger API Dokümanı:** [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
 ### Yöntem 2: Yerel Ortamda Manuel Çalıştırma (Python + Node.js)
 
-#### 1. Backend (FastAPI) Başlatılması
+#### 1. Backend (FastAPI)
 
 ```bash
 # 1. Proje klasörüne gidin
@@ -122,7 +150,7 @@ pip install -r backend/requirements.txt
 python -m uvicorn backend.main:app --reload --port 8000
 ```
 
-#### 2. Frontend (React + Vite) Başlatılması
+#### 2. Frontend (React + Vite)
 
 Yeni bir terminal penceresinde:
 
@@ -137,9 +165,15 @@ npm install
 npm run dev
 ```
 
+#### Testler
+
+```bash
+python -m pytest backend/tests -q
+```
+
 ---
 
-## 🔑 Ortam Değişkenleri (.env)
+## Ortam Değişkenleri (.env)
 
 Projenin kök dizininde yer alan `.env` dosyası konfigürasyon parametrelerini barındırır:
 
@@ -153,52 +187,68 @@ ABUSEIPDB_API_KEY=your_abuseipdb_api_key_here
 
 # Sunucu Portu
 PORT=8000
+
+# Sayfa içeriği analizi (şüpheli sayfa JavaScript çalıştırılmadan indirilir). Kapatmak için false yapın.
+PAGE_FETCH_ENABLED=true
+
+# Yönetici paneli giriş parolası (mutlaka değiştirin)
+ADMIN_PASSWORD=change_me
 ```
 
 ---
 
-## 📡 API Uç Noktaları (Endpoints)
+## API Uç Noktaları (Endpoints)
 
 | Yöntem | Endpoint | Açıklama |
 | :--- | :--- | :--- |
 | `POST` | `/analyze/url` | Verilen URL için tam CTI analizi ve risk skorlaması yapar |
-| `GET` | `/ioc` | Kayıtlı tüm Tehdit Göstergelerini (IOC) listeler |
-| `GET` | `/ioc/{ioc_id}` | Belirli bir IOC'nin detaylarını getirir |
-| `POST` | `/ioc` | Yeni bir IOC kaydı oluşturur |
-| `GET` | `/campaigns` | Oltalama kampanyalarını ve ilişkili verileri listeler |
-| `GET` | `/health` | Servis sağlık durumunu ve entegrasyon modüllerini kontrol eder |
+| `GET` | `/ioc/{ioc_id}` | Tek bir IOC kaydını ve son analiz sonucunu getirir |
+| `GET` | `/ioc/{ioc_id}/related` | IOC ile ilişkili benzer alan adlarını listeler |
+| `GET` | `/campaign/{campaign_id}` | Kampanya detaylarını ve ilişkili IOC listesini döner |
+| `GET` | `/brands` | Taklit tespitinde kullanılan kurum kataloğunu döner |
+| `GET` | `/lists` | İzin ve engel listesi kurallarını listeler (`?list_type=whitelist\|blacklist`) |
+| `POST` | `/lists` | Yeni kural ekler (yalnızca yönetici) |
+| `DELETE` | `/lists/{item_id}` | Kuralı siler (yalnızca yönetici) |
+| `POST` | `/admin/login` | Yönetici girişi |
+| `GET` | `/admin/verify` | Yönetici oturumunu doğrular |
+| `GET` | `/admin/stats` | Platform istatistiklerini döner |
+| `GET` | `/health` | Servis sağlık durumunu kontrol eder |
 
-Etkileşimli Swagger dokümantasyonu için sunucu çalışırken `http://localhost:8000/docs` adresini ziyaret edebilirsiniz.
+Yönetici gerektiren isteklerde oturum anahtarı `X-Admin-Token` başlığıyla gönderilir. Etkileşimli Swagger dokümantasyonu için sunucu çalışırken `http://localhost:8000/docs` adresini ziyaret edebilirsiniz.
 
 ---
 
-## 📂 Proje Dizin Yapısı
+## Proje Dizin Yapısı
 
 ```
 Phishing-Campaign-Intelligence-Platform/
-├── backend/                  # FastAPI Arka Plan Servisleri
-│   ├── api/                  # API Rota Tanımları (analyze, ioc, campaign)
-│   ├── core/                 # Tehdit Analiz Motoru (WHOIS, Typosquat, Reputation)
-│   ├── models/               # SQLAlchemy Veritabanı Modelleri & DB bağlantısı
-│   ├── schemas/              # Pydantic Veri Doğrulama Şemaları
-│   ├── config.py             # Ayarlar ve Ortam Değişkenleri
-│   └── main.py               # FastAPI Uygulama Giriş Noktası
-├── src/                      # React Frontend Uygulaması
-│   ├── api/                  # Backend API İstemcisi
-│   ├── components/           # UI Bileşenleri (ThreatScoreCard, ReasonsList, vb.)
-│   ├── App.jsx               # Ana Dashboard Sayfası
-│   └── index.css             # TailwindCSS Stiller
-├── docs/                     # Görseller ve Dokümantasyon Belgeleri
-│   └── dashboard.png         # Örnek Ekran Görüntüsü
-├── .env.example              # Örnek Çevre Değişkenleri Dosyası
-├── Dockerfile                # Frontend / Production Docker Yapılandırması
-├── docker-compose.yml        # Multi-Container Orchestration (DB + Backend + Frontend)
-├── package.json              # Node.js Bağımlılıkları ve Komutları
-└── README.md                 # Proje Dokümantasyonu
+├── backend/                  # FastAPI arka plan servisleri
+│   ├── api/                  # API rotaları (analyze, ioc, campaign, lists, brands, admin)
+│   ├── core/                 # Analiz motoru (WHOIS, typosquat, itibar, skorlama, sayfa içeriği)
+│   ├── data/                 # Kurum kataloğu (tr_brands.json)
+│   ├── models/               # SQLAlchemy veritabanı modelleri ve bağlantı
+│   ├── schemas/              # Pydantic veri doğrulama şemaları
+│   ├── tests/                # Backend testleri
+│   ├── config.py             # Ayarlar ve ortam değişkenleri
+│   └── main.py               # FastAPI uygulama giriş noktası
+├── src/                      # React frontend uygulaması
+│   ├── api/                  # Backend API istemcisi
+│   ├── components/           # Arayüz bileşenleri (brief, layout, ui)
+│   ├── lib/                  # Yardımcılar (tema, yönlendirme, TLP, karar)
+│   ├── pages/                # Sayfalar (Analiz, Kurallar, Katalog, Yönetici)
+│   ├── App.jsx               # Ana uygulama
+│   └── index.css             # TailwindCSS stilleri
+├── docs/
+│   └── screenshots/          # README ekran görüntüleri
+├── .env.example              # Örnek ortam değişkenleri dosyası
+├── Dockerfile                # Frontend Docker yapılandırması
+├── docker-compose.yml        # Çoklu konteyner (DB + Backend + Frontend)
+├── package.json              # Node.js bağımlılıkları ve komutları
+└── README.md                 # Proje dokümantasyonu
 ```
 
 ---
 
-## 📝 Lisans
+## Lisans
 
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Güvenlik araştırmaları ve eğitim amaçlı kullanıma uygundur.
+Bu proje MIT Lisansı altında lisanslanmıştır. Güvenlik araştırmaları ve eğitim amaçlı kullanıma uygundur.
