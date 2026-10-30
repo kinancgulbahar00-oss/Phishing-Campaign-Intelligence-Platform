@@ -106,7 +106,7 @@ Bilgisayarınızda [Docker Desktop](https://www.docker.com/products/docker-deskt
 
 1. Proje dizinine gidin:
    ```bash
-   cd Phishing-Campaign-Intelligence-Platform-main
+   cd Mihenk
    ```
 
 2. `.env` dosyasını hazırlayın:
@@ -131,7 +131,7 @@ Servisler hazır olduğunda:
 
 ```bash
 # 1. Proje klasörüne gidin
-cd Phishing-Campaign-Intelligence-Platform-main
+cd Mihenk
 
 # 2. .env dosyasını oluşturun
 cp .env.example .env
@@ -156,7 +156,7 @@ Yeni bir terminal penceresinde:
 
 ```bash
 # 1. Proje klasörüne gidin
-cd Phishing-Campaign-Intelligence-Platform-main
+cd Mihenk
 
 # 2. NPM paketlerini yükleyin
 npm install
